@@ -8,8 +8,10 @@ class Student {
   final String? socialSecurityNumber;
   final String? firstNameArabic;
   final String? firstNameLatin;
+  final String? imageBase64;
 
   Student({
+    this.imageBase64,
     this.dateOfBirth,
     this.id,
     this.placeOfBirth,
@@ -31,6 +33,7 @@ class Student {
     String? socialSecurityNumber,
     String? firstNameArabic,
     String? firstNameLatin,
+    String? imageBase64,
   }) =>
       Student(
         dateOfBirth: dateOfBirth ?? this.dateOfBirth,
@@ -42,20 +45,21 @@ class Student {
         socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
         firstNameArabic: firstNameArabic ?? this.firstNameArabic,
         firstNameLatin: firstNameLatin ?? this.firstNameLatin,
+        imageBase64: firstNameLatin ?? this.firstNameLatin,
       );
 
   static Student fromJson(Map<String, dynamic> json) {
     return Student(
-      dateOfBirth: DateTime.parse(json['dateNaissance']),
-      id: json['id'],
-      placeOfBirth: json['lieuNaissance'],
-      placeOfBirthArabic: json['lieuNaissanceArabe'],
-      lastNameArabic: json['nomArabe'],
-      lastNameLatin: json['nomLatin'],
-      socialSecurityNumber: json['nss'],
-      firstNameArabic: json['prenomArabe'],
-      firstNameLatin: json['prenomLatin'],
-    );
+        dateOfBirth: DateTime.parse(json['dateNaissance']),
+        id: json['id'],
+        placeOfBirth: json['lieuNaissance'],
+        placeOfBirthArabic: json['lieuNaissanceArabe'],
+        lastNameArabic: json['nomArabe'],
+        lastNameLatin: json['nomLatin'],
+        socialSecurityNumber: json['nss'],
+        firstNameArabic: json['prenomArabe'],
+        firstNameLatin: json['prenomLatin'],
+        imageBase64: json['image']);
   }
 
   bool isEmpty() {
@@ -81,6 +85,7 @@ class Student {
       'nss': socialSecurityNumber,
       'prenomArabe': firstNameArabic,
       'prenomLatin': firstNameLatin,
+      'image': imageBase64
     };
   }
 }

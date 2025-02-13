@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+ import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ActionCard extends StatelessWidget {
   final String title;
@@ -16,7 +17,7 @@ class ActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return ShadCard(
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),

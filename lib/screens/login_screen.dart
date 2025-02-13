@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,8 +13,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _studentIdController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _studentIdController = TextEditingController(text: "202038045295");
+  final _passwordController = TextEditingController(text: "sCGC8HuQ");
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -36,6 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocListener<StudentBloc, StudentState>(
       listener: (context, state) {
+        print(state);
+
         if (state is StudentLoading) {
           setState(() {
             _isLoading = true;
@@ -43,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
 
         if (state is StudentLoaded) {
-          Navigator.of(context).pushReplacementNamed('/dashboard');
+          context.go('/dashboard');
 
           setState(() {
             _isLoading = false;
@@ -84,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 32),
-                  Card(
+                  ShadCard(
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Form(

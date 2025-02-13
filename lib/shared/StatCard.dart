@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
@@ -16,7 +17,7 @@ class StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return ShadCard(
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -42,4 +43,3 @@ class StatCard extends StatelessWidget {
     );
   }
 }
-

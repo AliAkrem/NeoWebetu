@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
+import 'package:go_router/go_router.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
 import 'package:webtu_v2/models/student.dart';
-import 'package:webtu_v2/screens/dashboard/components/actionGrid.dart';
-import 'package:webtu_v2/screens/dashboard/components/app_bar.dart';
+import 'package:webtu_v2/screens/home/components/actionGrid.dart';
+import 'package:webtu_v2/screens/home/components/app_bar.dart';
 import 'package:webtu_v2/shared/shared.dart';
 
 class StudentDashboard extends StatefulWidget {
@@ -18,9 +18,11 @@ class _StudentDashboardState extends State<StudentDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        appBar: HomeAppBar(),
-        body: StudentContainer(context));
+      extendBody: true,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: HomeAppBar(),
+      body: StudentContainer(context),
+    );
   }
 }
 
@@ -44,7 +46,6 @@ Widget StudentContainer(context) {
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   border: Border(
                     bottom: BorderSide(
                       color: Colors.grey.shade200,
@@ -90,7 +91,7 @@ Widget StudentContainer(context) {
           state is FailureState ||
           state is SignInFailureState) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.of(context).pushReplacementNamed('/login');
+          context.go('/login');
         });
 
         return Center(

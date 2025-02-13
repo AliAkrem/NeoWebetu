@@ -11,28 +11,21 @@ Future<Student> getStudentInfo() async {
   final session =
       AuthResponse.fromJson(json.decode(prefs.getString(SESSION_KEY) ?? ""));
 
-  Future<void> saveStudentInfo(Student student) async {
-    final StudentRepository studentRepo = StudentRepository();
-
-    await studentRepo.addStudent(Student.fromJson({
-      'id': student.id,
-      'dateNaissance': student.dateOfBirth?.toIso8601String(),
-      'lieuNaissance': student.placeOfBirth,
-      'lieuNaissanceArabe': student.placeOfBirthArabic,
-      'nomArabe': student.firstNameArabic,
-      'nomLatin': student.firstNameLatin,
-      'nss': student.socialSecurityNumber,
-      'prenomArabe': student.lastNameArabic,
-      'prenomLatin': student.lastNameLatin,
-    }));
-  }
-
   try {
     final response = await get(INDIVIDUAL_URL(session.uuid), true);
-    if (response.statusCode == 200) {
-      final studentInfo = Student.fromJson(json.decode(response.body));
+    final imageResponse = await get(STUDENT_IMAGE_URL(session.uuid), true);
 
-      await saveStudentInfo(studentInfo);
+    if (response.statusCode == 200 || imageResponse.statusCode == 200) {
+      final studentInfo = Student.fromJson(
+        {
+          ...json.decode(response.body),
+          ...{"image": imageResponse.body}
+        },
+      );
+
+
+      print(studentInfo);
+
 
       return studentInfo;
     } else {

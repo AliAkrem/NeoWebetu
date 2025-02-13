@@ -43,6 +43,8 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
     on<SignInStudentEvent>(
       (event, emit) async {
+        emit(StudentLoading());
+
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
         try {
@@ -52,6 +54,8 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
           );
 
           final student = await getStudentInfo();
+
+          
 
           studentRepository.addStudent(student);
 

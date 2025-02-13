@@ -1,4 +1,4 @@
- class Tables {
+class Tables {
   static String StudentTableName = "students";
 
   static String StudentTable = '''
@@ -11,6 +11,7 @@
    nomLatin TEXT,
    nss TEXT,
    prenomArabe TEXT,
-   prenomLatin TEXT
+   prenomLatin TEXT,
+   image TEXT
    )''';
- }
+}

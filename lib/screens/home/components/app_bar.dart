@@ -15,17 +15,15 @@ class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _HomeAppBarState extends State<HomeAppBar> {
   _handleLogout() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      //redirection is handled by the body currently
       context.read<StudentBloc>().add(SignOutStudentEvent());
-      // Navigator.of(context).pushReplacementNamed('/login');
     });
   }
 
   @override
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
       elevation: 0,
-      title: const Text('Dashboard'),
       actions: [
         IconButton(
           icon: const Icon(Icons.logout_outlined),
