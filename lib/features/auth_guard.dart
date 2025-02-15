@@ -12,17 +12,12 @@ class AuthGuard extends StatefulWidget {
 
 class _AuthGuardState extends State<AuthGuard> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocListener<StudentBloc, StudentState>(
       listener: (context, state) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (state is StudentLoaded) {
-             context.go('/dashboard');
+            context.go('/home');
           } else if (state is FailureState ||
               state is StudentNotFound ||
               state is SignInFailureState) {

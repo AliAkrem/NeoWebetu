@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
 import 'package:webtu_v2/models/student.dart';
-import 'package:webtu_v2/screens/home/components/actionGrid.dart';
-import 'package:webtu_v2/screens/home/components/app_bar.dart';
+import 'package:webtu_v2/features/home/components/quic_actions.dart';
+import 'package:webtu_v2/features/home/components/app_bar.dart';
 import 'package:webtu_v2/shared/shared.dart';
 
 class StudentDashboard extends StatefulWidget {
@@ -124,23 +124,23 @@ class StudentStatsGrid extends StatelessWidget {
       childAspectRatio: 1.5,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        StatCard(
+        ActionCard(
           title: 'User ID',
-          value: '${student.id}',
+          subtitle: '${student.id}',
           icon: Icons.person_outline,
-          color: const Color(0xFF18181B),
+          onTap: () {},
         ),
-        StatCard(
+        ActionCard(
           title: 'NAME',
-          value: '${student.firstNameLatin} ${student.lastNameLatin}',
+          subtitle: '${student.firstNameLatin} ${student.lastNameLatin}',
           icon: Icons.school_outlined,
-          color: const Color(0xFF18181B),
+          onTap: () {},
         ),
-        StatCard(
+        ActionCard(
           title: 'Individual ID',
-          value: '${student.socialSecurityNumber}',
+          subtitle: '${student.socialSecurityNumber}',
           icon: Icons.badge_outlined,
-          color: const Color(0xFF18181B),
+          onTap: () {},
         ),
       ],
     );

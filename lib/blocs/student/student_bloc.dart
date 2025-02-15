@@ -19,10 +19,10 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
       try {
         final student = await studentRepository.getStudent();
 
-        if (student.isEmpty()) {
-          emit(FailureState(errorMessage: "student not found"));
-        } else {
+        if (student != null) {
           emit(StudentLoaded(student: student));
+        } else {
+          emit(FailureState(errorMessage: 'student not found'));
         }
       } catch (e) {
         emit(FailureState(errorMessage: e.toString()));
@@ -34,8 +34,10 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
         emit(StudentLoading());
 
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        AuthService(prefs).logout();
+
         studentRepository.deleteStudent();
+
+        await prefs.clear();
 
         emit(StudentNotFound());
       },
@@ -54,8 +56,6 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
           );
 
           final student = await getStudentInfo();
-
-          
 
           studentRepository.addStudent(student);
 

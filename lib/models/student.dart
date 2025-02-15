@@ -1,26 +1,26 @@
 class Student {
-  final DateTime? dateOfBirth;
-  final int? id;
-  final String? placeOfBirth;
-  final String? placeOfBirthArabic;
-  final String? lastNameArabic;
-  final String? lastNameLatin;
-  final String? socialSecurityNumber;
-  final String? firstNameArabic;
-  final String? firstNameLatin;
-  final String? imageBase64;
+  final DateTime dateOfBirth;
+  final int id;
+  final String placeOfBirth;
+  final String placeOfBirthArabic;
+  final String lastNameArabic;
+  final String lastNameLatin;
+  final String socialSecurityNumber;
+  final String firstNameArabic;
+  final String firstNameLatin;
+  final String imageBase64;
 
   Student({
-    this.imageBase64,
-    this.dateOfBirth,
-    this.id,
-    this.placeOfBirth,
-    this.placeOfBirthArabic,
-    this.lastNameArabic,
-    this.lastNameLatin,
-    this.socialSecurityNumber,
-    this.firstNameArabic,
-    this.firstNameLatin,
+    required this.imageBase64,
+    required this.dateOfBirth,
+    required this.id,
+    required this.placeOfBirth,
+    required this.placeOfBirthArabic,
+    required this.lastNameArabic,
+    required this.lastNameLatin,
+    required this.socialSecurityNumber,
+    required this.firstNameArabic,
+    required this.firstNameLatin,
   });
 
   Student copyWith({
@@ -62,21 +62,10 @@ class Student {
         imageBase64: json['image']);
   }
 
-  bool isEmpty() {
-    return dateOfBirth == null &&
-        id == null &&
-        placeOfBirth == null &&
-        placeOfBirthArabic == null &&
-        lastNameArabic == null &&
-        lastNameLatin == null &&
-        socialSecurityNumber == null &&
-        firstNameArabic == null &&
-        firstNameLatin == null;
-  }
 
   Map<String, dynamic> toJson() {
     return {
-      'dateNaissance': dateOfBirth?.toIso8601String(),
+      'dateNaissance': dateOfBirth.toIso8601String(),
       'id': id,
       'lieuNaissance': placeOfBirth,
       'lieuNaissanceArabe': placeOfBirthArabic,

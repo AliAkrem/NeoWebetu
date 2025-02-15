@@ -13,8 +13,6 @@ Future<Map<String, String>> _getAuthHeaders() async {
 }
 
 Future<Map<String, String>> _getHeaders() async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final String? token = prefs.getString(TOKEN_KEY);
   return {
     'Content-Type': 'application/json',
   };

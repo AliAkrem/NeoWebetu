@@ -6,7 +6,7 @@ class StudentRepository {
   final DatabaseHelper databaseHelper = DatabaseHelper();
 
   //Get Student //? SELECT * FROM Student limit 1
-  Future<Student> getStudent() async {
+  Future<Student?> getStudent() async {
     final db = await databaseHelper.initDatabase();
     final List<Map<String, Object?>> student =
         await db.query(Tables.StudentTableName, limit: 1);
@@ -14,7 +14,7 @@ class StudentRepository {
     if (student.isNotEmpty) {
       return Student.fromJson(student.first);
     } else {
-      return Student();
+      return null;
     }
   }
 

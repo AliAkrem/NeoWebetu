@@ -1,10 +1,8 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:cached_memory_image/cached_memory_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -19,15 +17,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        setState(() {
-          theme = ThemeModelInheritedNotifier.of(context).theme.brightness ==
-              Brightness.dark;
-        });
-      },
-    );
   }
 
   @override
@@ -69,18 +58,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       child: CircleAvatar(
                           radius: 58,
-                          backgroundImage: student.imageBase64 != null
-                              ? CachedMemoryImageProvider(
-                                  'profile://image',
-                                  base64: student.imageBase64,
-                                )
-                              : AssetImage('assets/default_avatar.png')),
+                          backgroundImage: CachedMemoryImageProvider(
+                            'profile://image/${student.id}',
+                            base64: student.imageBase64,
+                          )),
                     ),
                   ),
                   const SizedBox(height: 24),
 
-                  // User Info ShadCard
-                  ShadCard(
+                  // User Info Card
+                  Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -115,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 16),
 
                   // Settings Cards
-                  ShadCard(
+                  Card(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(

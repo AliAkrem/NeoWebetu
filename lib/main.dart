@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
 import 'package:webtu_v2/route.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
+import './theme.dart';
 
 void main() async {
   runApp(MyApp());
@@ -17,14 +17,12 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
         create: (context) =>
             StudentBloc(StudentRepository())..add(GetStudentEvent()),
-        child: ShadApp.materialRouter(
+        child: MaterialApp.router(
           title: 'Student Portal',
           debugShowCheckedModeBanner: false,
-          theme: ShadThemeData(
-            brightness: Brightness.dark,
-            colorScheme: ShadColorScheme.fromName('green', brightness: Brightness.dark),
-          ),
+          theme: appTheme,
           routerConfig: appRoutes,
+          
         ));
   }
 }

@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:webtu_v2/features/cards/components/card.dart';
+
+class CardsScreen extends StatefulWidget {
+  const CardsScreen({super.key});
+
+  @override
+  State<CardsScreen> createState() => _CardsScreenState();
+}
+
+class _CardsScreenState extends State<CardsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return StudentCard();
+  }
+}

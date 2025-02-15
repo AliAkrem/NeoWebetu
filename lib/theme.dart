@@ -1,150 +1,48 @@
 import 'package:flutter/material.dart';
-// Light theme inspired by shadcn/ui
-final lightTheme = ThemeData(
-  useMaterial3: true,
-  brightness: Brightness.light,
-  colorScheme: ColorScheme.light(
-    primary: const Color(0xFF18181B),
-    secondary: Colors.grey.shade800,
-    surface: Colors.white,
-    onPrimary: Colors.white,
-    onSecondary: Colors.white,
-    onSurface: Colors.grey.shade900,
+
+final inputDecorationTheme = InputDecorationTheme(
+  filled: true,
+  fillColor: Color(0xFF2D2D2D),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+    borderSide: BorderSide.none,
   ),
-  cardTheme: CardTheme(
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-      side: BorderSide(color: Colors.grey.shade200),
-    ),
-    color: Colors.white,
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+    borderSide: BorderSide(color: Color(0xFF4285F4), width: 2),
   ),
-  inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: Colors.grey.shade50,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Colors.grey.shade200),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Colors.grey.shade200),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: Color(0xFF18181B), width: 1.5),
-    ),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+  errorBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+    borderSide: BorderSide(color: Color(0xFFEA4335), width: 2),
   ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF18181B),
-      foregroundColor: Colors.white,
-      elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-  ),
-  textTheme: TextTheme(
-    headlineLarge: TextStyle(
-      color: Colors.grey.shade900,
-      fontSize: 32,
-      fontWeight: FontWeight.bold,
-    ),
-    headlineMedium: TextStyle(
-      color: Colors.grey.shade900,
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
-    ),
-    titleLarge: TextStyle(
-      color: Colors.grey.shade900,
-      fontSize: 20,
-      fontWeight: FontWeight.w600,
-    ),
-    bodyLarge: TextStyle(
-      color: Colors.grey.shade700,
-      fontSize: 16,
-    ),
-    bodyMedium: TextStyle(
-      color: Colors.grey.shade600,
-      fontSize: 14,
-    ),
-  ),
+  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
 );
 
-// Dark theme inspired by shadcn/ui
-final darkTheme = ThemeData(
-  useMaterial3: true,
-  brightness: Brightness.dark,
-  colorScheme: ColorScheme.dark(
-    primary: Colors.grey.shade100,
-    secondary: Colors.grey.shade300,
-    surface: const Color(0xFF18181B),
-    onPrimary: const Color(0xFF18181B),
-    onSecondary: const Color(0xFF18181B),
-    onSurface: Colors.grey.shade100,
-  ),
-  cardTheme: CardTheme(
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-      side: BorderSide(color: Colors.grey.shade800),
+var appTheme = ThemeData(
+    fontFamily: 'Nunito',
+    brightness: Brightness.dark,
+    useMaterial3: true,
+    colorScheme: ColorScheme.dark(
+      primary: Color(0xFF4285F4),
+      secondary: Color(0xFF34A853),
+      surface: Color(0xFF1F1F1F),
+      error: Color(0xFFEA4335),
     ),
-    color: const Color(0xFF27272A),
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: const Color(0xFF27272A),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Colors.grey.shade800),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Colors.grey.shade800),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Colors.grey.shade400, width: 1.5),
-    ),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.grey.shade100,
-      foregroundColor: const Color(0xFF18181B),
+    appBarTheme: AppBarTheme(
+      centerTitle: false,
       elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+      backgroundColor: Color(0xFF1F1F1F),
+      titleTextStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        elevation: 0,
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     ),
-  ),
-  textTheme: TextTheme(
-    headlineLarge: TextStyle(
-      color: Colors.grey.shade100,
-      fontSize: 32,
-      fontWeight: FontWeight.bold,
+    cardTheme: CardTheme(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
-    headlineMedium: TextStyle(
-      color: Colors.grey.shade100,
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
-    ),
-    titleLarge: TextStyle(
-      color: Colors.grey.shade100,
-      fontSize: 20,
-      fontWeight: FontWeight.w600,
-    ),
-    bodyLarge: TextStyle(
-      color: Colors.grey.shade300,
-      fontSize: 16,
-    ),
-    bodyMedium: TextStyle(
-      color: Colors.grey.shade400,
-      fontSize: 14,
-    ),
-  ),
-);
+    inputDecorationTheme: inputDecorationTheme);
