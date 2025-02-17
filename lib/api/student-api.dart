@@ -7,7 +7,7 @@ import '../http/requests.dart';
 
 Future<Student> getStudentInfo() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  
+
   if (prefs.getString(SESSION_KEY) == null) {
     throw Exception('session expired');
   }
@@ -16,13 +16,22 @@ Future<Student> getStudentInfo() async {
       AuthResponse.fromJson(json.decode(prefs.getString(SESSION_KEY) ?? ""));
 
   try {
-    final response = await get(INDIVIDUAL_URL(session.uuid), true);
+    final response = await get(STUDENT_CARDS_URL(session.uuid), true);
     final imageResponse = await get(STUDENT_IMAGE_URL(session.uuid), true);
+
+    final decodedData = json.decode(response.body)[0];
+    decodedData.forEach((key, value) {
+      if (value is String) {
+        decodedData[key] = utf8.decode(latin1.encode(value));
+      }
+    });
 
     if (response.statusCode == 200 || imageResponse.statusCode == 200) {
       final studentInfo = Student.fromJson(
         {
-          ...json.decode(response.body),
+          // return the last year info
+          //TODO (dev): change with accurate logic to determine the last year to avoid bugs
+          ...decodedData,
           ...{"image": imageResponse.body}
         },
       );

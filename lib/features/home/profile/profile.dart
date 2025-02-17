@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cached_memory_image/cached_memory_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,56 +45,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  // Profile Image
                   Center(
-                    child: Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: CircleAvatar(
+                            minRadius: 52,
+                            backgroundImage: CachedMemoryImageProvider(
+                              'profile://image/${student.id}',
+                              base64: student.imageBase64,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: CircleAvatar(
-                          radius: 58,
-                          backgroundImage: CachedMemoryImageProvider(
-                            'profile://image/${student.id}',
-                            base64: student.imageBase64,
-                          )),
+                        Text(
+                          '${student.firstNameLatin} ${student.lastNameLatin}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 24),
-
-                  // User Info Card
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          Text(
-                            '${student.firstNameLatin} ${student.lastNameLatin}',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-
                           const SizedBox(height: 16),
                           // Date of Birth
                           ListTile(
                             leading: const Icon(Icons.cake),
                             title: const Text('Date of Birth'),
                             subtitle: Text(
-                                '${student.dateOfBirth?.toString().split(" ").first}'),
+                                student.birthDate.toString().split(" ").first),
                           ),
                           // Place of Birth
                           ListTile(
                             leading: const Icon(Icons.location_city),
                             title: const Text('Place of Birth'),
-                            subtitle: Text('${student.placeOfBirth}'),
+                            subtitle: Text(student.birthPlace),
                           ),
                         ],
                       ),
@@ -131,8 +124,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ListTile(
                               leading: const Icon(Icons.dark_mode_outlined),
                               title: const Text('theme'),
-                              trailing:
-                                  Switch(value: false, onChanged: (val) {})),
+                              trailing: Switch(
+                                  value: AdaptiveTheme.of(context).mode ==
+                                      AdaptiveThemeMode.dark,
+                                  onChanged: (val) {
+                                    if (val) {
+                                      AdaptiveTheme.of(context).setDark();
+                                    } else {
+                                      AdaptiveTheme.of(context).setLight();
+                                    }
+                                  })),
                         ],
                       ),
                     ),
@@ -164,9 +165,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 18,
-                  )
                 ],
               ),
             ),

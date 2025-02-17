@@ -1,80 +1,155 @@
 class Student {
-  final DateTime dateOfBirth;
+  final String academicYearCode;
+  final int academicYearId;
   final int id;
-  final String placeOfBirth;
-  final String placeOfBirthArabic;
+  final DateTime birthDate;
+  final String birthPlace;
+  final String birthPlaceArabic;
   final String lastNameArabic;
   final String lastNameLatin;
-  final String socialSecurityNumber;
   final String firstNameArabic;
   final String firstNameLatin;
+  final String institutionNameArabic;
+  final String institutionNameLatin;
+  final int levelId;
+  final String levelLongLabelArabic;
+  final String levelLongLabelLatin;
+  final String registrationNumber;
+  final String domainLabel;
+  final String domainLabelArabic;
+  final String branchLabel;
+  final String branchLabelArabic;
+  final String specialtyLabel;
+  final String specialtyLabelArabic;
+  final int trainingOfferOpeningId;
+  final String refCycleLabel;
+  final String refCycleLabelArabic;
+  final int statusId;
+  final String uuid;
   final String imageBase64;
 
-  Student({
-    required this.imageBase64,
-    required this.dateOfBirth,
-    required this.id,
-    required this.placeOfBirth,
-    required this.placeOfBirthArabic,
-    required this.lastNameArabic,
-    required this.lastNameLatin,
-    required this.socialSecurityNumber,
-    required this.firstNameArabic,
-    required this.firstNameLatin,
-  });
+  Student(
+      {required this.academicYearCode,
+      required this.academicYearId,
+      required this.id,
+      required this.birthDate,
+      required this.birthPlace,
+      required this.birthPlaceArabic,
+      required this.lastNameArabic,
+      required this.lastNameLatin,
+      required this.firstNameArabic,
+      required this.firstNameLatin,
+      required this.institutionNameArabic,
+      required this.institutionNameLatin,
+      required this.levelId,
+      required this.levelLongLabelArabic,
+      required this.levelLongLabelLatin,
+      required this.registrationNumber,
+      required this.domainLabel,
+      required this.domainLabelArabic,
+      required this.branchLabel,
+      required this.branchLabelArabic,
+      required this.specialtyLabel,
+      required this.specialtyLabelArabic,
+      required this.trainingOfferOpeningId,
+      required this.refCycleLabel,
+      required this.refCycleLabelArabic,
+      required this.statusId,
+      required this.uuid,
+      required this.imageBase64});
 
-  Student copyWith({
-    DateTime? dateOfBirth,
-    int? id,
-    String? placeOfBirth,
-    String? placeOfBirthArabic,
-    String? lastNameArabic,
-    String? lastNameLatin,
-    String? socialSecurityNumber,
-    String? firstNameArabic,
-    String? firstNameLatin,
-    String? imageBase64,
-  }) =>
-      Student(
-        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-        id: id ?? this.id,
-        placeOfBirth: placeOfBirth ?? this.placeOfBirth,
-        placeOfBirthArabic: placeOfBirthArabic ?? this.placeOfBirthArabic,
-        lastNameArabic: lastNameArabic ?? this.lastNameArabic,
-        lastNameLatin: lastNameLatin ?? this.lastNameLatin,
-        socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
-        firstNameArabic: firstNameArabic ?? this.firstNameArabic,
-        firstNameLatin: firstNameLatin ?? this.firstNameLatin,
-        imageBase64: firstNameLatin ?? this.firstNameLatin,
-      );
-
-  static Student fromJson(Map<String, dynamic> json) {
+  factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
-        dateOfBirth: DateTime.parse(json['dateNaissance']),
-        id: json['id'],
-        placeOfBirth: json['lieuNaissance'],
-        placeOfBirthArabic: json['lieuNaissanceArabe'],
-        lastNameArabic: json['nomArabe'],
-        lastNameLatin: json['nomLatin'],
-        socialSecurityNumber: json['nss'],
-        firstNameArabic: json['prenomArabe'],
-        firstNameLatin: json['prenomLatin'],
-        imageBase64: json['image']);
+      academicYearCode: json['anneeAcademiqueCode'] as String,
+      academicYearId: json['anneeAcademiqueId'] as int,
+      id: json['id'] as int,
+      birthDate: DateTime.parse(json['individuDateNaissance'] as String),
+      birthPlace: json['individuLieuNaissance'] as String,
+      birthPlaceArabic: json['individuLieuNaissanceArabe'] as String,
+      lastNameArabic: json['individuNomArabe'] as String,
+      lastNameLatin: json['individuNomLatin'] as String,
+      firstNameArabic: json['individuPrenomArabe'] as String,
+      firstNameLatin: json['individuPrenomLatin'] as String,
+      institutionNameArabic: json['llEtablissementArabe'] as String,
+      institutionNameLatin: json['llEtablissementLatin'] as String,
+      levelId: json['niveauId'] as int,
+      levelLongLabelArabic: json['niveauLibelleLongAr'] as String,
+      levelLongLabelLatin: json['niveauLibelleLongLt'] as String,
+      registrationNumber: json['numeroInscription'] as String,
+      domainLabel: json['ofLlDomaine'] as String,
+      domainLabelArabic: json['ofLlDomaineArabe'] as String,
+      branchLabel: json['ofLlFiliere'] as String,
+      branchLabelArabic: json['ofLlFiliereArabe'] as String,
+      specialtyLabel: json['ofLlSpecialite'] as String,
+      specialtyLabelArabic: json['ofLlSpecialiteArabe'] as String,
+      trainingOfferOpeningId: json['ouvertureOffreFormationId'] as int,
+      refCycleLabel: json['refLibelleCycle'] as String,
+      refCycleLabelArabic: json['refLibelleCycleAr'] as String,
+      statusId: json['situationId'] as int,
+      uuid: json['uuid'] as String,
+      imageBase64: json['image'] as String,
+    );
   }
-
 
   Map<String, dynamic> toJson() {
     return {
-      'dateNaissance': dateOfBirth.toIso8601String(),
+      'anneeAcademiqueCode': academicYearCode,
+      'anneeAcademiqueId': academicYearId,
       'id': id,
-      'lieuNaissance': placeOfBirth,
-      'lieuNaissanceArabe': placeOfBirthArabic,
-      'nomArabe': lastNameArabic,
-      'nomLatin': lastNameLatin,
-      'nss': socialSecurityNumber,
-      'prenomArabe': firstNameArabic,
-      'prenomLatin': firstNameLatin,
+      'individuDateNaissance': birthDate.toIso8601String(),
+      'individuLieuNaissance': birthPlace,
+      'individuLieuNaissanceArabe': birthPlaceArabic,
+      'individuNomArabe': lastNameArabic,
+      'individuNomLatin': lastNameLatin,
+      'individuPrenomArabe': firstNameArabic,
+      'individuPrenomLatin': firstNameLatin,
+      'llEtablissementArabe': institutionNameArabic,
+      'llEtablissementLatin': institutionNameLatin,
+      'niveauId': levelId,
+      'niveauLibelleLongAr': levelLongLabelArabic,
+      'niveauLibelleLongLt': levelLongLabelLatin,
+      'numeroInscription': registrationNumber,
+      'ofLlDomaine': domainLabel,
+      'ofLlDomaineArabe': domainLabelArabic,
+      'ofLlFiliere': branchLabel,
+      'ofLlFiliereArabe': branchLabelArabic,
+      'ofLlSpecialite': specialtyLabel,
+      'ofLlSpecialiteArabe': specialtyLabelArabic,
+      'ouvertureOffreFormationId': trainingOfferOpeningId,
+      'refLibelleCycle': refCycleLabel,
+      'refLibelleCycleAr': refCycleLabelArabic,
+      'situationId': statusId,
+      'uuid': uuid,
       'image': imageBase64
     };
   }
 }
+
+
+//         "anneeAcademiqueCode": "2024/2025",
+//         "anneeAcademiqueId": 22,
+//         "id": 13243010,
+//         "individuDateNaissance": "2001-12-29",
+//         "individuLieuNaissance": "MOHAMADIA",
+//         "individuLieuNaissanceArabe": "المحمدية",
+//         "individuNomArabe": "بركة",
+//         "individuNomLatin": "BARKA",
+//         "individuPrenomArabe": "علي أكرم",
+//         "individuPrenomLatin": "ALI AKREM",
+//         "llEtablissementArabe": "جامعة معسكر",
+//         "llEtablissementLatin": "université de mascara",
+//         "niveauId": 13,
+//         "niveauLibelleLongAr": "الماستر",
+//         "niveauLibelleLongLt": "Master 2",
+//         "numeroInscription": "UN29012024202038045295",
+//         "ofLlDomaine": "Mathématiques et Informatique",
+//         "ofLlDomaineArabe": "رياضيات و إعلام آلي",
+//         "ofLlFiliere": "Informatique",
+//         "ofLlFiliereArabe": "إعلام آلي",
+//         "ofLlSpecialite": "Réseaux et systèmes distribués",
+//         "ofLlSpecialiteArabe": " شبكات والأنظمة الموزعة",
+//         "ouvertureOffreFormationId": 79464,
+//         "refLibelleCycle": "master",
+//         "refLibelleCycleAr": "الماستر",
+//         "situationId": 26,
+//         "uuid": "0f5b98ee-2428-4d42-aafd-71533b450262"

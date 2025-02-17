@@ -5,8 +5,8 @@ import 'package:webtu_v2/features/cards/components/content.dart';
 
 class StudentCard extends StatefulWidget {
   const StudentCard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<StudentCard> createState() => _StudentCardState();
@@ -85,23 +85,24 @@ class _StudentCardState extends State<StudentCard>
         return Center(
           child: GestureDetector(
             onTap: _toggleCard,
-            child: AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Transform(
-                  alignment: Alignment.center,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.001)
-                    ..rotateX(_animation
-                        .value), // Changed to rotateX for vertical flip
-                  child: RotatedBox(
-                    quarterTurns: 3,
-                    child: _isFrontVisible
-                        ? _buildFrontCard(cardWidth, cardHeight)
-                        : _buildBackCard(cardWidth, cardHeight),
-                  ),
-                );
-              },
+            child: Container(
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.001)
+                      ..rotateX(_animation.value),
+                    child: RotatedBox(
+                      quarterTurns: 3,
+                      child: _isFrontVisible
+                          ? _buildFrontCard(cardWidth, cardHeight)
+                          : _buildBackCard(cardWidth, cardHeight),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         );
@@ -109,19 +110,41 @@ class _StudentCardState extends State<StudentCard>
     );
   }
 
+//
+
   Widget _buildFrontCard(double width, double height) {
-    return SizedBox(
+    return Container(
       width: width,
       height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
             // Background image
+
             Positioned.fill(
               child: Image.asset(
                 'assets/card/card_student_empty_front.webp',
                 fit: BoxFit.cover,
+              ),
+            ),
+            Positioned(
+              top: 10,
+              right: 20,
+              child: Image.asset(
+                'assets/card/onou.webp',
+                width: 80, // Adjust size as needed
               ),
             ),
             // Card content
@@ -133,7 +156,18 @@ class _StudentCardState extends State<StudentCard>
   }
 
   Widget _buildBackCard(double width, double height) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
       width: width,
       height: height,
       child: ClipRRect(

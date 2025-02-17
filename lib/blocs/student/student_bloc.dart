@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
-import 'package:webtu_v2/api/student.dart';
+import 'package:webtu_v2/api/student-api.dart';
 import 'package:webtu_v2/models/student.dart';
 import 'package:webtu_v2/services/auth_service.dart';
 part 'student_event.dart';

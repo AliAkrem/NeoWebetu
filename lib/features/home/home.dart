@@ -136,12 +136,6 @@ class StudentStatsGrid extends StatelessWidget {
           icon: Icons.school_outlined,
           onTap: () {},
         ),
-        ActionCard(
-          title: 'Individual ID',
-          subtitle: '${student.socialSecurityNumber}',
-          icon: Icons.badge_outlined,
-          onTap: () {},
-        ),
       ],
     );
   }

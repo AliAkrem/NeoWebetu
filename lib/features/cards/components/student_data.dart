@@ -17,24 +17,34 @@ class StudentData extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  rowData(
+                      title: 'اللقب',
+                      value: student.lastNameArabic,
+                      secondaryValue: student.lastNameLatin),
+                  rowData(
+                      title: 'الاسم',
+                      value: student.firstNameArabic,
+                      secondaryValue: student.firstNameLatin),
+                  rowData(
+                      title: 'تاريخ و مكان الميلاد',
+                      value: student.birthDate.toString().split(" ").first,
+                      secondaryValue: student.birthPlaceArabic),
+                  rowData(title: 'الميدان', value: student.domainLabelArabic),
+                  rowData(title: 'الفرع', value: student.branchLabelArabic),
+                ],
+              ),
+              const SizedBox(width: 16),
               SizedBox(
-                width: 120,
-                height: 120,
+                width: 100,
                 child: Image(
                   image: CachedMemoryImageProvider(
                     'profile://image/${student.id}',
                     base64: student.imageBase64,
                   ),
                 ),
-              ),
-              const SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  rowData(title: 'First Name:', value: student.firstNameLatin),
-                  const SizedBox(height: 4),
-                  rowData(title: 'Last Name:', value: student.lastNameLatin),
-                ],
               ),
             ],
           );
@@ -46,21 +56,45 @@ class StudentData extends StatelessWidget {
     );
   }
 
-  Widget rowData({required String title, required String value}) {
-    return Row(children: [
-      Text(
-        title,
-        style: const TextStyle(
-            fontSize: 12, color: Colors.black, overflow: TextOverflow.clip),
-      ),
-      SizedBox(
-        width: 4,
-      ),
-      Text(
-        value,
-        style: const TextStyle(
-            fontSize: 12, color: Colors.black, overflow: TextOverflow.clip),
-      )
-    ]);
+  Widget rowData(
+      {required String title, required String value, String? secondaryValue}) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 11,
+              color: Colors.black,
+              overflow: TextOverflow.clip,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                secondaryValue ?? "",
+                style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  overflow: TextOverflow.clip,
+                ),
+              ),
+              SizedBox(
+                width: 24,
+              ),
+              Text(
+                value,
+                style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                    overflow: TextOverflow.clip),
+              ),
+            ],
+          )
+        ]);
   }
 }
