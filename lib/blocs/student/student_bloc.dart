@@ -4,7 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
-import 'package:webtu_v2/api/student-api.dart';
+import 'package:webtu_v2/api/period_api.dart';
+import 'package:webtu_v2/api/student_api.dart';
+import 'package:webtu_v2/blocs/period/period_bloc.dart';
+import 'package:webtu_v2/blocs/session/session_bloc.dart';
+import 'package:webtu_v2/models/auth_response.dart';
 import 'package:webtu_v2/models/student.dart';
 import 'package:webtu_v2/services/auth_service.dart';
 part 'student_event.dart';
@@ -12,14 +16,28 @@ part 'student_state.dart';
 
 class StudentBloc extends Bloc<StudentEvent, StudentState> {
   final StudentRepository studentRepository;
-
-  StudentBloc(this.studentRepository) : super(StudentInitial()) {
+  final PeriodBloc periodBloc;
+  final SessionBloc sessionBloc;
+  StudentBloc({
+    required this.studentRepository,
+    required this.periodBloc,
+    required this.sessionBloc,
+  }) : super(StudentInitial()) {
     on<GetStudentEvent>((event, emit) async {
       emit(StudentLoading());
       try {
         final student = await studentRepository.getStudent();
 
         if (student != null) {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+          final AuthResponse? session =
+              await AuthService(prefs).getCurrentUser();
+
+          if (session != null) {
+            sessionBloc.add(LoadSessionEvent(session: session));
+          }
+
           emit(StudentLoaded(student: student));
         } else {
           emit(FailureState(errorMessage: 'student not found'));
@@ -50,16 +68,21 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
         try {
-          await AuthService(prefs).login(
+          final session = await AuthService(prefs).login(
             event.username,
             event.password,
           );
 
+          sessionBloc.add(LoadSessionEvent(session: session));
+
           final student = await getStudentInfo();
 
-          studentRepository.addStudent(student);
+          final periods = await getPeriod(student.levelId);
 
           emit(StudentLoaded(student: student));
+          studentRepository.addStudent(student);
+
+          periodBloc.add(AddPeriod(periods: periods));
         } catch (e) {
           emit(SignInFailureState(
               errorMessage: "Invalid credentials. Please try again."));

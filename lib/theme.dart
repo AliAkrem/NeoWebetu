@@ -21,10 +21,7 @@ final inputDecorationTheme = InputDecorationTheme(
 
 var appThemeDark = ThemeData(
     fontFamily: GoogleFonts.nunito().fontFamily,
-    fontFamilyFallback: [
-      ...?GoogleFonts.nunito().fontFamilyFallback,
-      'NotoKufiArabic'
-    ],
+    fontFamilyFallback: [...?GoogleFonts.notoKufiArabic().fontFamilyFallback],
     brightness: Brightness.dark,
     useMaterial3: true,
     colorScheme: ColorScheme.dark(
@@ -34,9 +31,8 @@ var appThemeDark = ThemeData(
       error: Color(0xFFEA4335),
     ),
     appBarTheme: AppBarTheme(
-      centerTitle: false,
-      elevation: 1,
-      backgroundColor: Color(0xFF1F1F1F),
+      elevation: 0,
+      backgroundColor: Color.fromARGB(26, 52, 168, 83),
       titleTextStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -57,10 +53,7 @@ var appThemeDark = ThemeData(
 
 var appThemeLight = ThemeData(
   fontFamily: GoogleFonts.nunito().fontFamily,
-  fontFamilyFallback: [
-    ...?GoogleFonts.nunito().fontFamilyFallback,
-    'NotoKufiArabic'
-  ],
+  fontFamilyFallback: [...?GoogleFonts.notoKufiArabic().fontFamilyFallback],
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     secondary: Color(0xFF4285F4),
@@ -70,9 +63,7 @@ var appThemeLight = ThemeData(
     onSurface: Colors.black87,
   ),
   appBarTheme: AppBarTheme(
-    centerTitle: false,
-    elevation: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: Color.fromARGB(26, 52, 168, 83),
     titleTextStyle: TextStyle(
       fontSize: 22,
       color: Colors.black,

@@ -36,6 +36,8 @@ Future<Student> getStudentInfo() async {
         },
       );
 
+      prefs.setInt(CARD_ID, studentInfo.id); //? reference the card_id :/
+
       return studentInfo;
     } else {
       throw Exception('Failed to login: ${response.body}');

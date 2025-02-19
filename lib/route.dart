@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webtu_v2/features/auth_guard.dart';
-import 'package:webtu_v2/features/cards/cards.dart';
+import 'package:webtu_v2/features/home/cards/cards.dart';
+import 'package:webtu_v2/features/home/exams_notes/exams_notes.dart';
 import 'package:webtu_v2/features/home/layout.dart';
 import 'package:webtu_v2/features/home/profile/profile.dart';
 import 'package:webtu_v2/features/login/login.dart';
@@ -28,6 +29,12 @@ final appRoutes = GoRouter(
           path: '/home',
           pageBuilder: (context, state) => NoTransitionPage(
             child: StudentDashboard(),
+          ),
+        ),
+        GoRoute(
+          path: '/home/exams',
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: ExamsNotesScreen(),
           ),
         ),
         GoRoute(

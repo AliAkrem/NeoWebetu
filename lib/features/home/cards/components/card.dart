@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:webtu_v2/features/cards/components/content.dart';
+import 'package:webtu_v2/features/home/cards/components/content.dart';
 
 class StudentCard extends StatefulWidget {
   const StudentCard({
@@ -120,10 +120,10 @@ class _StudentCardState extends State<StudentCard>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -132,7 +132,6 @@ class _StudentCardState extends State<StudentCard>
         child: Stack(
           children: [
             // Background image
-
             Positioned.fill(
               child: Image.asset(
                 'assets/card/card_student_empty_front.webp',
@@ -161,10 +160,10 @@ class _StudentCardState extends State<StudentCard>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
