@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:webtu_v2/data/student_card.dart' as studentCard;
 
 class CardHeader extends StatelessWidget {
-  const CardHeader({super.key, this.cardTitle = 'بطاقة الطالب'});
-  final cardTitle;
-
+  const CardHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     final studentState = context.watch<StudentBloc>().state;
-    final university = studentState is StudentLoaded
+    final university = studentState is StudentLoadedState
         ? studentState.student.institutionNameArabic
         : '';
 
@@ -18,14 +17,14 @@ class CardHeader extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "اﳉﻤﻬﻮرﻳﺔ اﳉﺰاﺋﺮﻳﺔ اﻟﺪﳝﻘﺮاﻃﻴﺔ اﻟﺸﻌﺒﻴﺔ",
+            studentCard.pdra,
             style: TextStyle(
               fontSize: 10,
               color: Colors.black,
             ),
           ),
           Text(
-            "وزارة التعليم العالي والبحث العلمي",
+            studentCard.mohe,
             style: TextStyle(
               fontSize: 10,
               color: Colors.black,
@@ -40,7 +39,7 @@ class CardHeader extends StatelessWidget {
             ),
           ),
           Text(
-            cardTitle,
+            studentCard.cardTitle,
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,

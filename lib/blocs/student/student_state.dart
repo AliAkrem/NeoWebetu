@@ -10,19 +10,19 @@ final class StudentInitial extends StudentState {
   List<Object?> get props => [];
 }
 
-final class StudentLoading extends StudentState {
+final class StudentLoadingState extends StudentState {
   @override
   List<Object?> get props => [];
 }
 
-final class StudentLoaded extends StudentState {
+final class StudentLoadedState extends StudentState {
   final Student student;
-  const StudentLoaded({required this.student});
+  const StudentLoadedState({required this.student});
   @override
   List<Object?> get props => [];
 }
 
-final class StudentNotFound extends StudentState {
+final class StudentNotFoundState extends StudentState {
   @override
   List<Object?> get props => [];
 }

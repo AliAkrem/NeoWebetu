@@ -6,7 +6,7 @@ class Tables {
   static String PeriodTableName = "period";
 
   static String StudentTable = '''
-   CREATE TABLE IF NOT EXISTS $StudentTableName(
+  CREATE TABLE IF NOT EXISTS $StudentTableName(
     id INTEGER,
     anneeAcademiqueCode TEXT,
     anneeAcademiqueId INTEGER,
@@ -35,31 +35,29 @@ class Tables {
     situationId INTEGER,
     uuid TEXT,
     image TEXT
-   )''';
+   );''';
 
   static String ExamNoteTable = '''
   CREATE TABLE IF NOT EXISTS $ExamTableName(
-      id int PRIMARY KEY NOT NULL ,
-      id_dia INTEGER ,
-      mcLibelleAr TEXT,
-      mcLibelleFr TEXT,
-      noteExamen REAL,
-      idPeriode INTEGER,
-      rattachementMcCoefficient INTEGER
-  );
-''';
+    id int PRIMARY KEY NOT NULL ,
+    id_dia INTEGER ,
+    mcLibelleAr TEXT,
+    mcLibelleFr TEXT,
+    noteExamen REAL,
+    idPeriode INTEGER,
+    rattachementMcCoefficient INTEGER
+  );''';
 
   static String PeriodTable = '''
-    CREATE TABLE IF NOT EXISTS $PeriodTableName(
-      id INTEGER PRIMARY KEY NOT NULL,
-      code TEXT,
-      libelleLongAr TEXT,
-      libelleLongArCycle TEXT,
-      libelleLongArNiveau TEXT,
-      libelleLongFrCycle TEXT,
-      libelleLongFrNiveau TEXT,
-      libelleLongLt TEXT,
-      rang INTEGER
-    );
-''';
+  CREATE TABLE IF NOT EXISTS $PeriodTableName(
+    id INTEGER PRIMARY KEY NOT NULL,
+    code TEXT,
+    libelleLongAr TEXT,
+    libelleLongArCycle TEXT,
+    libelleLongArNiveau TEXT,
+    libelleLongFrCycle TEXT,
+    libelleLongFrNiveau TEXT,
+    libelleLongLt TEXT,
+    rang INTEGER
+  );''';
 }

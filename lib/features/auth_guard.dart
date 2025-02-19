@@ -16,10 +16,10 @@ class _AuthGuardState extends State<AuthGuard> {
     return BlocListener<StudentBloc, StudentState>(
       listener: (context, state) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (state is StudentLoaded) {
+          if (state is StudentLoadedState) {
             context.go('/home');
           } else if (state is FailureState ||
-              state is StudentNotFound ||
+              state is StudentNotFoundState ||
               state is SignInFailureState) {
             context.go('/login');
           }

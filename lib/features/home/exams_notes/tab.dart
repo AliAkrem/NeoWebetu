@@ -15,18 +15,9 @@ class PeriodTab extends StatefulWidget implements PreferredSizeWidget {
 
 class _PeriodTabState extends State<PeriodTab> {
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<PeriodBloc>().add(GetPeriod());
-    });
-
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<PeriodBloc, PeriodState>(builder: (context, state) {
-      if (state is PeriodLoading) {
+      if (state is PeriodLoadingState) {
         return TabBar(
           controller: widget.tabController,
           tabs: [1, 2].map((period) {
@@ -37,7 +28,7 @@ class _PeriodTabState extends State<PeriodTab> {
         );
       }
 
-      if (state is PeriodLoaded) {
+      if (state is PeriodLoadedState) {
         return TabBar(
           controller: widget.tabController,
           tabs: state.periods.map((period) {

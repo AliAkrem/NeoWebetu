@@ -18,12 +18,12 @@ class _StudentDashboardState extends State<StudentDashboard> {
   Widget build(BuildContext context) {
     return BlocBuilder<StudentBloc, StudentState>(
       builder: (context, state) {
-        if (state is StudentLoading) {
+        if (state is StudentLoadingState) {
           return Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (state is StudentLoaded) {
+        if (state is StudentLoadedState) {
           final student = state.student;
           return Scaffold(
               body: CustomScrollView(
@@ -52,10 +52,12 @@ class _StudentDashboardState extends State<StudentDashboard> {
             ],
           ));
         }
-        if (state is StudentNotFound ||
+        if (state is StudentNotFoundState ||
             state is FailureState ||
             state is SignInFailureState) {
-          Future.microtask(() => context.go('/login'));
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.go('/login');
+          });
 
           return Center(
             child: CircularProgressIndicator(),
@@ -85,13 +87,12 @@ class QuickActionsGrid extends StatelessWidget {
       shrinkWrap: true, //
       itemBuilder: (context, index) {
         return ActionCard(
-          title: quickActions[index]['title'] as String,
-          subtitle: quickActions[index]['subtitle'] as String,
-          icon: quickActions[index]['icon'] as IconData,
+          title: quickActions[index].title,
+          subtitle: quickActions[index].subtitle,
+          icon: quickActions[index].icon,
           onTap: () {
-            if (quickActions[index]['path'] != null) {
-              Future.microtask(
-                  () => context.go(quickActions[index]['path'] as String));
+            if (quickActions[index].path != null) {
+              context.go(quickActions[index].path!);
             }
           },
         );

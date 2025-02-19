@@ -6,33 +6,29 @@ class StudentRepository {
   final DatabaseHelper databaseHelper = DatabaseHelper();
 
   //Get Student //? SELECT * FROM Student limit 1
-  Future<Student?> getStudent() async {
+  Future<Student> getStudent() async {
     final db = await databaseHelper.initDatabase();
     final List<Map<String, Object?>> student =
         await db.query(Tables.StudentTableName, limit: 1);
 
-    if (student.isNotEmpty) {
-      return Student.fromJson(student.first);
-    } else {
-      return null;
-    }
+    return Student.fromJson(student.first);
   }
 
   // Add Student //? INSERT INTO Student
-  Future<int> addStudent(Student Student) async {
+  Future<int> addStudent(Student student) async {
     //clear existing student
     await deleteStudent();
 
     // add new one
     final db = await databaseHelper.initDatabase();
-    return db.insert(Tables.StudentTableName, Student.toJson());
+    return db.insert(Tables.StudentTableName, student.toJson());
   }
 
   //  Update Student //? UPDATE WHERE id = ?
-  Future<int> updateStudent(Student Student) async {
+  Future<int> updateStudent(Student student) async {
     final db = await databaseHelper.initDatabase();
-    return db.update(Tables.StudentTableName, Student.toJson(),
-        where: "id = ?", whereArgs: [Student.id]);
+    return db.update(Tables.StudentTableName, student.toJson(),
+        where: "id = ?", whereArgs: [student.id]);
   }
 
   //Delete Student //? DELETE from Student

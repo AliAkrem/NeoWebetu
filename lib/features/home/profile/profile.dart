@@ -24,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<StudentBloc, StudentState>(
       builder: (context, state) {
-        if (state is StudentLoading) {
+        if (state is StudentLoadingState) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         }
 
-        if (state is StudentLoaded) {
+        if (state is StudentLoadedState) {
           final student = state.student;
 
           return Scaffold(

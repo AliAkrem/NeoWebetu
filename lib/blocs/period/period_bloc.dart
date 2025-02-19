@@ -10,58 +10,44 @@ class PeriodBloc extends Bloc<PeriodEvent, PeriodState> {
   PeriodRepository periodRepository;
 
   PeriodBloc({required this.periodRepository}) : super(PeriodInitial()) {
-    on<GetPeriod>((event, emit) async {
-      emit(PeriodLoading());
+    on<GetPeriodEvent>((event, emit) async {
+      emit(PeriodLoadingState());
       try {
         final List<Period> periods = await periodRepository.getPeriod();
-        emit(PeriodLoaded(periods));
+        emit(PeriodLoadedState(periods));
       } catch (e) {
-        emit(PeriodError(e.toString()));
+        emit(PeriodFailureState(e.toString()));
       }
     });
 
-    on<AddPeriod>((event, emit) async {
-      emit(PeriodLoading());
+    on<AddPeriodEvent>((event, emit) async {
+      emit(PeriodLoadingState());
       try {
         final int count = await periodRepository.addPeriods(event.periods);
         if (count > 0) {
           final List<Period> periods = await periodRepository.getPeriod();
-          emit(PeriodLoaded(periods));
+          emit(PeriodLoadedState(periods));
         } else {
-          emit(PeriodError("Failed to add periods"));
+          emit(PeriodFailureState("Failed to add periods"));
         }
       } catch (e) {
-        emit(PeriodError(e.toString()));
+        emit(PeriodFailureState(e.toString()));
       }
     });
 
-    on<UpdatePeriod>((event, emit) async {
-      emit(PeriodLoading());
+    on<UpdatePeriodEvent>((event, emit) async {
+      emit(PeriodLoadingState());
       try {
         final int count = await periodRepository.updatePeriod(event.period);
         if (count > 0) {
           final List<Period> periods = await periodRepository.getPeriod();
-          emit(PeriodLoaded(periods));
+          emit(PeriodLoadedState(periods));
         } else {
-          emit(PeriodError("Failed to update period"));
+          emit(PeriodFailureState("Failed to update period"));
         }
       } catch (e) {
-        emit(PeriodError(e.toString()));
+        emit(PeriodFailureState(e.toString()));
       }
     });
-
-    //   on<DeletePeriod>((event, emit) async {
-    //     emit(PeriodLoading());
-    //     try {
-    //       final int count = await periodRepository.deletePeriod();
-    //       if (count > 0) {
-    //         emit(PeriodInitial());
-    //       } else {
-    //         emit(PeriodError("Failed to delete period"));
-    //       }
-    //     } catch (e) {
-    //       emit(PeriodError(e.toString()));
-    //     }
-    //   });
   }
 }

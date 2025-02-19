@@ -8,24 +8,24 @@ sealed class PeriodEvent extends Equatable {
 }
 
 
-class GetPeriod extends PeriodEvent {
-  const GetPeriod();
+class GetPeriodEvent extends PeriodEvent {
+  const GetPeriodEvent();
 }
 
 
 
-class AddPeriod extends PeriodEvent {
+class AddPeriodEvent extends PeriodEvent {
   final List<Period> periods;
-  const AddPeriod({required this.periods});
+  const AddPeriodEvent({required this.periods});
 
   @override
   List<Object> get props => [periods];
 }
 
 
-class UpdatePeriod extends PeriodEvent {
+class UpdatePeriodEvent extends PeriodEvent {
   final Period period;
-  const UpdatePeriod(this.period);
+  const UpdatePeriodEvent(this.period);
 
   @override
   List<Object> get props => [period];

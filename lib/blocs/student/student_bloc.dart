@@ -24,24 +24,19 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
     required this.sessionBloc,
   }) : super(StudentInitial()) {
     on<GetStudentEvent>((event, emit) async {
-      emit(StudentLoading());
+      emit(StudentLoadingState());
       try {
         final student = await studentRepository.getStudent();
 
-        if (student != null) {
-          final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-          final AuthResponse? session =
-              await AuthService(prefs).getCurrentUser();
+        final AuthResponse? session = await AuthService(prefs).getCurrentUser();
 
-          if (session != null) {
-            sessionBloc.add(LoadSessionEvent(session: session));
-          }
-
-          emit(StudentLoaded(student: student));
-        } else {
-          emit(FailureState(errorMessage: 'student not found'));
+        if (session != null) {
+          sessionBloc.add(LoadSessionEvent(session: session));
         }
+
+        emit(StudentLoadedState(student: student));
       } catch (e) {
         emit(FailureState(errorMessage: e.toString()));
       }
@@ -49,21 +44,20 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
     on<SignOutStudentEvent>(
       (event, emit) async {
-        emit(StudentLoading());
+        emit(StudentLoadingState());
 
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
         studentRepository.deleteStudent();
-
         await prefs.clear();
 
-        emit(StudentNotFound());
+        emit(StudentNotFoundState());
       },
     );
 
     on<SignInStudentEvent>(
       (event, emit) async {
-        emit(StudentLoading());
+        emit(StudentLoadingState());
 
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -77,12 +71,12 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
           final student = await getStudentInfo();
 
-          final periods = await getPeriod(student.levelId);
+          final periods = await getCurrentPeriod(student.levelId);
 
-          emit(StudentLoaded(student: student));
+          emit(StudentLoadedState(student: student));
           studentRepository.addStudent(student);
 
-          periodBloc.add(AddPeriod(periods: periods));
+          periodBloc.add(AddPeriodEvent(periods: periods));
         } catch (e) {
           emit(SignInFailureState(
               errorMessage: "Invalid credentials. Please try again."));

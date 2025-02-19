@@ -9,19 +9,19 @@ sealed class PeriodState extends Equatable {
 
 final class PeriodInitial extends PeriodState {}
 
-final class PeriodLoading extends PeriodState {}
+final class PeriodLoadingState extends PeriodState {}
 
-final class PeriodLoaded extends PeriodState {
+final class PeriodLoadedState extends PeriodState {
   final List<Period> periods;
-  const PeriodLoaded(this.periods);
+  const PeriodLoadedState(this.periods);
 
   @override
   List<Object> get props => [periods];
 }
 
-final class PeriodError extends PeriodState {
+final class PeriodFailureState extends PeriodState {
   final String message;
-  const PeriodError(this.message);
+  const PeriodFailureState(this.message);
 
   @override
   List<Object> get props => [message];

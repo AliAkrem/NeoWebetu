@@ -1,0 +1,9 @@
+const String cardTitle = "بطاقة الطالب";
+const String pdra = "اﳉﻤﻬﻮرﻳﺔ اﳉﺰاﺋﺮﻳﺔ اﻟﺪﳝﻘﺮاﻃﻴﺔ اﻟﺸﻌﺒﻴﺔ";
+const String mohe = "وزارة التعليم العالي والبحث العلمي";
+const String academicYear = "السنة الجامعية";
+const String lastName = "الاسم";
+const String firstName = "اللقب";
+const String dateAndPlaceOfBirth = "تاريخ و مكان الميلاد";
+const String domain = "الميدان";
+const String branch = "الفرع";

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:webtu_v2/DatabaseHelper/Repositories/exams_notes.dart';
 import 'package:webtu_v2/DatabaseHelper/Repositories/periods.dart';
 import 'package:webtu_v2/blocs/exams_notes/exams_notes_bloc.dart';
@@ -25,7 +24,7 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
       providers: [
         BlocProvider(
           create: (context) => PeriodBloc(periodRepository: PeriodRepository())
-            ..add(GetPeriod()),
+            ..add(GetPeriodEvent()),
         ),
         BlocProvider(
           create: (context) => ExamsNotesBloc(ExamsNotesRepository())

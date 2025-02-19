@@ -2,6 +2,7 @@ import 'package:cached_memory_image/cached_memory_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:webtu_v2/data/student_card.dart' as studentCard;
 
 class StudentData extends StatelessWidget {
   const StudentData({
@@ -12,7 +13,7 @@ class StudentData extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<StudentBloc, StudentState>(
       builder: (context, state) {
-        if (state is StudentLoaded) {
+        if (state is StudentLoadedState) {
           final student = state.student;
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -21,19 +22,23 @@ class StudentData extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   rowData(
-                      title: 'اللقب',
+                      title: studentCard.firstName,
                       value: student.lastNameArabic,
                       secondaryValue: student.lastNameLatin),
                   rowData(
-                      title: 'الاسم',
+                      title: studentCard.lastName,
                       value: student.firstNameArabic,
                       secondaryValue: student.firstNameLatin),
                   rowData(
-                      title: 'تاريخ و مكان الميلاد',
+                      title: studentCard.dateAndPlaceOfBirth,
                       value: student.birthDate.toString().split(" ").first,
                       secondaryValue: student.birthPlaceArabic),
-                  rowData(title: 'الميدان', value: student.domainLabelArabic),
-                  rowData(title: 'الفرع', value: student.branchLabelArabic),
+                  rowData(
+                      title: studentCard.domain,
+                      value: student.domainLabelArabic),
+                  rowData(
+                      title: studentCard.branch,
+                      value: student.branchLabelArabic),
                 ],
               ),
               const SizedBox(width: 16),

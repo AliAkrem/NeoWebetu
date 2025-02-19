@@ -32,11 +32,9 @@ class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
 
     on<RevalidateExamNotesEvent>(
       (event, emit) async {
-        final notes = await getExamNotes();
+        final res = await getExamNotes();
 
-        if (notes != null) {
-          add(UpsertExamsNotesEvent(newNotes: notes));
-        }
+        add(UpsertExamsNotesEvent(newNotes: res.notes));
       },
     );
   }
