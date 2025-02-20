@@ -62,7 +62,21 @@ class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
                     itemBuilder: (context, index) {
                       final note = entry.value[index];
                       return ListTile(
-                        title: Text(note.rattachementMcMcLibelleFr),
+                        title: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(note.rattachementMcMcLibelleFr),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              note.apCode,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          ],
+                        ),
                         subtitle: Text(note.rattachementMcMcLibelleAr),
                         trailing: Text(
                           'Note: ${note.note > -1 ? note.note : 'N/A'}',

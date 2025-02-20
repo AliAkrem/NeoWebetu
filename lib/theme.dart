@@ -10,7 +10,8 @@ final inputDecorationTheme = InputDecorationTheme(
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
-    borderSide: BorderSide(color: Color(0xFF4285F4), width: 2),
+  
+    borderSide: BorderSide(color: Color(0xFF34A853),width: 1),
   ),
   errorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
