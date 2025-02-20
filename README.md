@@ -1,16 +1,69 @@
-# webtu_v2
+# NeoWebetu
 
-A new Flutter project.
+NeoWebetu is a modern reimagining of the Progres/Webetu application, built with Flutter. This application enhances the original concept with a contemporary Material Design interface and advanced features focused on improving user experience.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+### Core Functionality
+- Complete remake of Progres/Webetu's essential features
+- Modern Material Design implementation
+- Intuitive user interface for seamless navigation
+- Responsive design supporting various screen sizes
 
-A few resources to get you started if this is your first Flutter project:
+### Enhanced Capabilities
+- Offline access to  data through local database integration
+- Improved data synchronization mechanisms
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Upcoming Features
+- Push notification system for important updates
+- Advanced data management capabilities
+- Enhanced offline functionality
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Technical Overview
+
+### Technology Stack
+- **Framework**: Flutter
+- **Database**: Local storage implementation for offline access
+- **Backend Integration**: Compatible with existing Progres/Webetu APIs
+
+
+## Installation
+
+1. Download the latest version of the application from the release
+2. Log in with your existing Progres/Webetu credentials
+
+## Development
+
+### Setup
+```bash
+# Clone the repository
+git clone https://github.com/AliAkrem/NeoWebetu.git
+
+# Navigate to project directory
+cd neowebetu
+
+# Install dependencies
+flutter pub get
+
+# Run the application
+flutter run
+```
+
+
+## Contributing
+
+We welcome contributions to NeoWebetu! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+license MIT
+
+---
+
+**Note**: This application is an independent project and is not officially affiliated with Progres/Webetu.
