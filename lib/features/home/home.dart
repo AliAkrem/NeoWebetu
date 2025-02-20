@@ -88,7 +88,7 @@ class QuickActionsGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         return ActionCard(
           title: quickActions[index].title,
-          subtitle: quickActions[index].subtitle,
+          subtitle: quickActions[index].subtitle ?? "",
           icon: quickActions[index].icon,
           onTap: () {
             if (quickActions[index].path != null) {

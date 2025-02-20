@@ -15,11 +15,10 @@ part 'student_event.dart';
 part 'student_state.dart';
 
 class StudentBloc extends Bloc<StudentEvent, StudentState> {
-  final StudentRepository studentRepository;
+  final StudentRepository studentRepository = StudentRepository();
   final PeriodBloc periodBloc;
   final SessionBloc sessionBloc;
   StudentBloc({
-    required this.studentRepository,
     required this.periodBloc,
     required this.sessionBloc,
   }) : super(StudentInitial()) {

@@ -11,7 +11,7 @@ class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
   final ExamsNotesRepository examRepo;
 
   ExamsNotesBloc(this.examRepo) : super(ExamsNotesInitial()) {
-    on<GetExamNotesEvent>((event, emit) async {
+    on<GetStaleExamNotesEvent>((event, emit) async {
       emit(ExamsNotesLoading());
       final exams = await examRepo.getExamsNotes();
       if (exams != null) {
@@ -27,7 +27,13 @@ class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
       await examRepo.upsertExamsNotes(event.newNotes);
 
       //? revalidate data :P
-      add(GetExamNotesEvent());
+      add(GetStaleExamNotesEvent());
+    });
+
+    on<GetExamNotesEvent>((event, emit) async {
+      // TODO (DEV) : this event will decide wthere to get revalidate data or get stale data
+
+      add(RevalidateExamNotesEvent());
     });
 
     on<RevalidateExamNotesEvent>(

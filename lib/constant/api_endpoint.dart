@@ -15,8 +15,8 @@ String ITABLISSMENT_LOGO_URL(String establishmentId) =>
 String STUDENT_CARDS_URL(String uuid) => "$BASE_URL/api/infos/bac/$uuid/dias";
 String EXAM_NOTES_URL(int cardId) =>
     "${BASE_URL}/api/infos/planningSession/dia/$cardId/noteExamens";
-String CC_NOTES_URL(String cardId) =>
-    "${BASE_URL}api/infos/controleContinue/dia/$cardId/notesCC";
+String ASSESSMENT_NOTES_URL(int cardId) =>
+    "${BASE_URL}/api/infos/controleContinue/dia/$cardId/notesCC";
 
 String CHECK_URL(String username) => "$BASE_URL/check/$username";
 

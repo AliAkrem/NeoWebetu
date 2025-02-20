@@ -1,35 +1,9 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:webtu_v2/api/exceptions.dart';
 import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/http/requests.dart';
+import 'package:webtu_v2/utils/http/methods.dart';
 import 'package:webtu_v2/models/exam_notes.dart';
-
-// Custom exceptions for better error handling
-class CardNotFoundException implements Exception {
-  final String message;
-  CardNotFoundException(
-      [this.message = 'No valid card ID found. Please select a card first.']);
-  @override
-  String toString() => message;
-}
-
-class NetworkException implements Exception {
-  final String message;
-  final int? statusCode;
-  NetworkException({required this.message, this.statusCode});
-  @override
-  String toString() =>
-      'Network Error: $message${statusCode != null ? ' (Status: $statusCode)' : ''}';
-}
-
-class DataParsingException implements Exception {
-  final String message;
-  final dynamic originalError;
-  DataParsingException(this.message, [this.originalError]);
-  @override
-  String toString() =>
-      'Data Parsing Error: $message${originalError != null ? ' ($originalError)' : ''}';
-}
 
 class ExamNotesResult {
   final List<ExamNotes> notes;
@@ -119,11 +93,11 @@ Future<ExamNotesResult> getExamNotes() async {
 }
 
 // Helper function to process Arabic encoding
-void _processArabicEncoding(Map<String, dynamic> module) {
-  module.forEach((key, value) {
+void _processArabicEncoding(Map<String, dynamic> data) {
+  data.forEach((key, value) {
     if (value is String) {
       try {
-        module[key] = utf8.decode(latin1.encode(value));
+        data[key] = utf8.decode(latin1.encode(value));
       } catch (e) {
         print('Warning: Failed to process Arabic encoding for key $key: $e');
       }

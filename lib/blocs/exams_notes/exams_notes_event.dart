@@ -7,6 +7,8 @@ sealed class ExamsNotesEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetStaleExamNotesEvent extends ExamsNotesEvent {}
+
 class GetExamNotesEvent extends ExamsNotesEvent {}
 
 class UpsertExamsNotesEvent extends ExamsNotesEvent {

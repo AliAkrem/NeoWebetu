@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/exams_notes.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/periods.dart';
-import 'package:webtu_v2/blocs/exams_notes/exams_notes_bloc.dart';
+import 'package:webtu_v2/blocs/assessment_note/assessment_notes_bloc.dart';
 import 'package:webtu_v2/blocs/period/period_bloc.dart';
 import 'package:webtu_v2/features/home/exams_notes/components/tab.dart';
-import 'package:webtu_v2/models/exam_notes.dart';
+import 'package:webtu_v2/models/assessment_notes.dart';
 
-class ExamsNotesScreen extends StatefulWidget {
-  const ExamsNotesScreen({super.key});
+class AssessmentNotesScreen extends StatefulWidget {
+  const AssessmentNotesScreen({super.key});
 
   @override
-  State<ExamsNotesScreen> createState() => _ExamsNotesScreenState();
+  State<AssessmentNotesScreen> createState() => _AssessmentNotesScreenState();
 }
 
-class _ExamsNotesScreenState extends State<ExamsNotesScreen>
+class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
@@ -23,16 +21,16 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => PeriodBloc()..add(GetPeriodEvent()),
+          create: (context) =>
+              AssessmentNotesBloc()..add(GetAssessmentNotesEvent()),
         ),
         BlocProvider(
-          create: (context) =>
-              ExamsNotesBloc(ExamsNotesRepository())..add(GetExamNotesEvent()),
-        )
+          create: (context) => PeriodBloc()..add(GetPeriodEvent()),
+        ),
       ],
-      child: BlocBuilder<ExamsNotesBloc, ExamsNotesState>(
+      child: BlocBuilder<AssessmentNotesBloc, AssessmentNotesState>(
         builder: (context, state) {
-          if (state is ExamsNotesLoading) {
+          if (state is AssessmentNoteLoading) {
             return const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
@@ -40,11 +38,11 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
             );
           }
 
-          if (state is ExamsNotesLoaded) {
+          if (state is AssessmentNotesLoaded) {
             // Group notes by period
-            final notesByPeriod = <int, List<ExamNotes>>{};
+            final notesByPeriod = <String, List<AssessmentNote>>{};
             for (var note in state.notes) {
-              notesByPeriod.putIfAbsent(note.periodId, () => []).add(note);
+              notesByPeriod.putIfAbsent(note.llPeriode, () => []).add(note);
             }
 
             _tabController = TabController(
@@ -54,7 +52,7 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
 
             return Scaffold(
               appBar: AppBar(
-                  title: const Text('Exam Notes'),
+                  title: const Text('Assessment Notes'),
                   bottom: PeriodTab(tabController: _tabController)),
               body: TabBarView(
                 controller: _tabController,
@@ -64,8 +62,8 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
                     itemBuilder: (context, index) {
                       final note = entry.value[index];
                       return ListTile(
-                        title: Text(note.labelFr),
-                        subtitle: Text(note.labelAr),
+                        title: Text(note.rattachementMcMcLibelleFr),
+                        subtitle: Text(note.rattachementMcMcLibelleAr),
                         trailing: Text(
                           'Note: ${note.note > -1 ? note.note : 'N/A'}',
                           style: TextStyle(

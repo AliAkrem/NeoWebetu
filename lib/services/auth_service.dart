@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/http/requests.dart';
+import 'package:webtu_v2/utils/http/methods.dart';
 import '../models/auth_response.dart';
 
 class AuthService {

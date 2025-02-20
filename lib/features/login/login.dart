@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webtu_v2/features/login/component/login_form.dart';
+import 'package:webtu_v2/features/login/components/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(height: 32),
-                const LoginForm()
+                const LoginForm(),
               ],
             ),
           ),

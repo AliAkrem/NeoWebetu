@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class QuickAction {
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final IconData icon;
   final String? path;
 
   const QuickAction({
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     required this.icon,
     this.path,
   });
@@ -17,23 +17,25 @@ class QuickAction {
 final List<QuickAction> quickActions = [
   QuickAction(
     title: 'Exams',
-    subtitle: 'View your exams notes',
-    icon: Icons.note_outlined,
+    icon: Icons.school,
     path: '/home/exams',
   ),
   QuickAction(
-    title: 'Assignments',
-    subtitle: '2 due this week',
-    icon: Icons.assignment_outlined,
+    title: 'Assessment',
+    icon: Icons.edit,
+    path: '/home/assessment',
   ),
   QuickAction(
-    title: 'Grades',
+    title: 'Exam Schedule',
     subtitle: 'View your grades',
-    icon: Icons.grade_outlined,
+    icon: Icons.calendar_month_rounded,
+    path: '/home/exam-schedule',
   ),
   QuickAction(
-    title: 'Resources',
-    subtitle: 'Access study materials',
-    icon: Icons.library_books_outlined,
+    title: 'Time Table',
+    subtitle: 'View your grades',
+    icon: Icons.calendar_month_rounded,
+    path: '/home/time-table',
   ),
+  
 ];

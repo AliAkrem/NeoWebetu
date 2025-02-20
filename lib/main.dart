@@ -33,9 +33,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => sessionBloc),
             BlocProvider(
               create: (context) => StudentBloc(
-                  studentRepository: StudentRepository(),
-                  sessionBloc: sessionBloc,
-                  periodBloc: PeriodBloc(periodRepository: PeriodRepository()))
+                  sessionBloc: sessionBloc, periodBloc: PeriodBloc())
                 ..add(GetStudentEvent()),
             ),
           ],

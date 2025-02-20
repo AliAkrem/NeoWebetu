@@ -10,7 +10,7 @@ sealed class ExamsNotesState extends Equatable {
 final class ExamsNotesInitial extends ExamsNotesState {}
 
 final class ExamsNotesLoading extends ExamsNotesState {}
-
+   
 final class ExamsNotesLoaded extends ExamsNotesState {
   final List<ExamNotes> notes;
 

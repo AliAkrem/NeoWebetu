@@ -1,32 +1,10 @@
 import 'dart:convert';
+import 'package:webtu_v2/api/exceptions.dart';
 import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/http/requests.dart';
+import 'package:webtu_v2/utils/http/methods.dart';
 import 'package:webtu_v2/models/period.dart';
 
 // Custom exceptions for better error handling
-class NetworkException implements Exception {
-  final String message;
-  final int statusCode;
-  NetworkException({required this.message, required this.statusCode});
-  @override
-  String toString() => 'Network Error: $message (Status: $statusCode)';
-}
-
-class DataParsingException implements Exception {
-  final String message;
-  final dynamic originalError;
-  DataParsingException(this.message, [this.originalError]);
-  @override
-  String toString() =>
-      'Data Parsing Error: $message${originalError != null ? ' ($originalError)' : ''}';
-}
-
-class InvalidInputException implements Exception {
-  final String message;
-  InvalidInputException(this.message);
-  @override
-  String toString() => 'Invalid Input: $message';
-}
 
 Future<List<Period>> getCurrentPeriod(int levelId) async {
   // Validate input

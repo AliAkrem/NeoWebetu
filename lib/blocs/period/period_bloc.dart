@@ -7,9 +7,9 @@ part 'period_event.dart';
 part 'period_state.dart';
 
 class PeriodBloc extends Bloc<PeriodEvent, PeriodState> {
-  PeriodRepository periodRepository;
+  PeriodRepository periodRepository = PeriodRepository();
 
-  PeriodBloc({required this.periodRepository}) : super(PeriodInitial()) {
+  PeriodBloc() : super(PeriodInitial()) {
     on<GetPeriodEvent>((event, emit) async {
       emit(PeriodLoadingState());
       try {

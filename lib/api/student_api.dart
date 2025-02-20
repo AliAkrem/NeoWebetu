@@ -1,34 +1,10 @@
+import 'package:webtu_v2/api/exceptions.dart';
 import 'package:webtu_v2/constant/api_endpoint.dart';
 import 'package:webtu_v2/models/student.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/auth_response.dart';
-import '../http/requests.dart';
-
-// Custom exceptions for better error handling
-class SessionExpiredException implements Exception {
-  final String message;
-  SessionExpiredException(
-      [this.message = 'Session has expired. Please login again.']);
-  @override
-  String toString() => message;
-}
-
-class NetworkException implements Exception {
-  final String message;
-  final int? statusCode;
-  NetworkException({required this.message, this.statusCode});
-  @override
-  String toString() =>
-      'Network Error: $message${statusCode != null ? ' (Status: $statusCode)' : ''}';
-}
-
-class DataParsingException implements Exception {
-  final String message;
-  DataParsingException(this.message);
-  @override
-  String toString() => 'Data Parsing Error: $message';
-}
+import '../utils/http/methods.dart';
 
 Future<Student> getStudentInfo() async {
   try {

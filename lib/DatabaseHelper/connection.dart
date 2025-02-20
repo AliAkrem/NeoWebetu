@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:webtu_v2/DatabaseHelper/tables.dart';
 
 class DatabaseHelper {
-  final databaseName = "app.db";
+  final databaseName = "app1.db";
 
   Future<Database> initDatabase() async {
     final databasePath = await getDatabasesPath();
@@ -12,6 +12,7 @@ class DatabaseHelper {
       await db.execute(Tables.StudentTable);
       await db.execute(Tables.ExamNoteTable);
       await db.execute(Tables.PeriodTable);
+      await db.execute(Tables.AssessmentNotesTable);
     });
   }
 }

@@ -10,12 +10,21 @@ class BottomNavbar extends StatefulWidget {
 }
 
 class _BottomNavbarState extends State<BottomNavbar> {
-  int index = 0;
+  _getCurrentIndex() {
+    final String path = GoRouterState.of(context).matchedLocation;
+    if (path.contains('/home/cards')) {
+      return 1;
+    } else if (path.contains('/home/profile')) {
+      return 2;
+    } else {
+      return 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: index,
+      currentIndex: _getCurrentIndex(),
       items: const [
         BottomNavigationBarItem(
           icon: Icon(
@@ -52,9 +61,6 @@ class _BottomNavbarState extends State<BottomNavbar> {
             break;
           default:
         }
-        setState(() {
-          index = value;
-        });
       },
     );
   }

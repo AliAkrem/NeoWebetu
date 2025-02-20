@@ -4,6 +4,7 @@ class Tables {
   static String StudentTableName = "students";
   static String ExamTableName = "exams_notes";
   static String PeriodTableName = "period";
+  static String AssessmentNotesTableName = "assessment_notes";
 
   static String StudentTable = '''
   CREATE TABLE IF NOT EXISTS $StudentTableName(
@@ -59,5 +60,18 @@ class Tables {
     libelleLongFrNiveau TEXT,
     libelleLongLt TEXT,
     rang INTEGER
+  );''';
+
+  static String AssessmentNotesTable = '''
+  CREATE TABLE IF NOT EXISTS $AssessmentNotesTableName(
+    id INTEGER PRIMARY KEY NOT NULL,
+    idDia INTEGER,
+    apCode TEXT,
+    llPeriode TEXT,
+    llPeriodeAr TEXT,
+    note REAL,
+    observation TEXT,
+    rattachementMcMcLibelleAr TEXT,
+  rattachementMcMcLibelleFr TEXT
   );''';
 }

@@ -74,8 +74,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          const SizedBox(height: 16),
-                          // Date of Birth
                           ListTile(
                             leading: const Icon(Icons.cake),
                             title: const Text('Date of Birth'),
@@ -92,7 +90,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
 
                   // Settings Cards
                   Card(
