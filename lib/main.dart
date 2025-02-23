@@ -1,12 +1,10 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/periods.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
-import 'package:webtu_v2/blocs/period/period_bloc.dart';
-import 'package:webtu_v2/blocs/session/session_bloc.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
-import 'package:webtu_v2/route.dart';
+import 'package:neowebetu/blocs/period/period_bloc.dart';
+import 'package:neowebetu/blocs/session/session_bloc.dart';
+import 'package:neowebetu/blocs/student/student_bloc.dart';
+import 'package:neowebetu/route.dart';
 import './theme.dart';
 
 void main() async {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:webtu_v2/features/home/cards/components/content.dart';
+import 'package:neowebetu/features/home/cards/components/content.dart';
 
 class StudentCard extends StatefulWidget {
   const StudentCard({
@@ -147,7 +147,7 @@ class _StudentCardState extends State<StudentCard>
               ),
             ),
             // Card content
-            CardContent()
+            const CardContent()
           ],
         ),
       ),
@@ -179,7 +179,7 @@ class _StudentCardState extends State<StudentCard>
                 fit: BoxFit.cover,
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

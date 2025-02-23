@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/periods.dart';
-import 'package:webtu_v2/models/period.dart';
+import 'package:neowebetu/DatabaseHelper/Repositories/periods.dart';
+import 'package:neowebetu/models/period.dart';
 
 part 'period_event.dart';
 part 'period_state.dart';
@@ -28,7 +28,7 @@ class PeriodBloc extends Bloc<PeriodEvent, PeriodState> {
           final List<Period> periods = await periodRepository.getPeriod();
           emit(PeriodLoadedState(periods));
         } else {
-          emit(PeriodFailureState("Failed to add periods"));
+          emit(const PeriodFailureState("Failed to add periods"));
         }
       } catch (e) {
         emit(PeriodFailureState(e.toString()));
@@ -43,7 +43,7 @@ class PeriodBloc extends Bloc<PeriodEvent, PeriodState> {
           final List<Period> periods = await periodRepository.getPeriod();
           emit(PeriodLoadedState(periods));
         } else {
-          emit(PeriodFailureState("Failed to update period"));
+          emit(const PeriodFailureState("Failed to update period"));
         }
       } catch (e) {
         emit(PeriodFailureState(e.toString()));

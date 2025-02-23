@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webtu_v2/shared/shared.dart';
+import 'package:neowebetu/shared/shared.dart';
 
 class StudentLayout extends StatefulWidget {
   final Widget child;
@@ -18,7 +18,7 @@ class _StudentLayoutState extends State<StudentLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: BottomNavbar(),
+      bottomNavigationBar: const BottomNavbar(),
     );
   }
 }

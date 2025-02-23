@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ComingSoonScreen extends StatelessWidget {
-  const ComingSoonScreen({Key? key}) : super(key: key);
+  const ComingSoonScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ComingSoonScreen extends StatelessWidget {
                 onPressed: () {
                   context.go('/home');
                 },
-                child: Text('Go Back'))
+                child: const Text('Go Back'))
           ],
         ),
       ),

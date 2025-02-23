@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/assessment_notes.dart';
-import 'package:webtu_v2/api/assessment_notes_api.dart';
-import 'package:webtu_v2/models/assessment_notes.dart';
+import 'package:neowebetu/DatabaseHelper/Repositories/assessment_notes.dart';
+import 'package:neowebetu/api/assessment_notes_api.dart';
+import 'package:neowebetu/models/assessment_notes.dart';
 
 part 'assessment_notes_event.dart';
 part 'assessment_notes_state.dart';
@@ -18,7 +18,7 @@ class AssessmentNotesBloc
       if (notes.isNotEmpty) {
         emit(AssessmentNotesLoaded(notes: notes));
       } else {
-        emit(FailureState(errorMessage: 'there are not data to show'));
+        emit(const FailureState(errorMessage: 'there are not data to show'));
       }
     });
 

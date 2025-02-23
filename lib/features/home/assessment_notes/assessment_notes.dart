@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/blocs/assessment_note/assessment_notes_bloc.dart';
-import 'package:webtu_v2/blocs/period/period_bloc.dart';
-import 'package:webtu_v2/features/home/exams_notes/components/tab.dart';
-import 'package:webtu_v2/models/assessment_notes.dart';
+import 'package:neowebetu/blocs/assessment_note/assessment_notes_bloc.dart';
+import 'package:neowebetu/blocs/period/period_bloc.dart';
+import 'package:neowebetu/features/home/exams_notes/components/tab.dart';
+import 'package:neowebetu/models/assessment_notes.dart';
 
 class AssessmentNotesScreen extends StatefulWidget {
   const AssessmentNotesScreen({super.key});
@@ -25,7 +25,7 @@ class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
               AssessmentNotesBloc()..add(GetAssessmentNotesEvent()),
         ),
         BlocProvider(
-          create: (context) => PeriodBloc()..add(GetPeriodEvent()),
+          create: (context) => PeriodBloc()..add(const GetPeriodEvent()),
         ),
       ],
       child: BlocBuilder<AssessmentNotesBloc, AssessmentNotesState>(
@@ -66,7 +66,7 @@ class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(note.rattachementMcMcLibelleFr),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Text(

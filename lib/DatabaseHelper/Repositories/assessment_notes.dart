@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:webtu_v2/DatabaseHelper/connection.dart';
-import 'package:webtu_v2/DatabaseHelper/tables.dart';
-import 'package:webtu_v2/models/assessment_notes.dart';
+import 'package:neowebetu/DatabaseHelper/connection.dart';
+import 'package:neowebetu/DatabaseHelper/tables.dart';
+import 'package:neowebetu/models/assessment_notes.dart';
 
 class AssessmentNotesRepository {
   final DatabaseHelper databaseHelper = DatabaseHelper();

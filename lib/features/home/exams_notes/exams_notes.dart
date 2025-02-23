@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/exams_notes.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/periods.dart';
-import 'package:webtu_v2/blocs/exams_notes/exams_notes_bloc.dart';
-import 'package:webtu_v2/blocs/period/period_bloc.dart';
-import 'package:webtu_v2/features/home/exams_notes/components/tab.dart';
-import 'package:webtu_v2/models/exam_notes.dart';
+import 'package:neowebetu/DatabaseHelper/Repositories/exams_notes.dart';
+import 'package:neowebetu/blocs/exams_notes/exams_notes_bloc.dart';
+import 'package:neowebetu/blocs/period/period_bloc.dart';
+import 'package:neowebetu/features/home/exams_notes/components/tab.dart';
+import 'package:neowebetu/models/exam_notes.dart';
 
 class ExamsNotesScreen extends StatefulWidget {
   const ExamsNotesScreen({super.key});
@@ -23,7 +22,7 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => PeriodBloc()..add(GetPeriodEvent()),
+          create: (context) => PeriodBloc()..add(const GetPeriodEvent()),
         ),
         BlocProvider(
           create: (context) =>

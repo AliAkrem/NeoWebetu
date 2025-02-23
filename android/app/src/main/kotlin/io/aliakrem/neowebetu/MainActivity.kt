@@ -1,4 +1,4 @@
-package com.example.webtu_v2
+package io.aliakrem.neowebetu
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:webtu_v2/api/exceptions.dart';
-import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/utils/http/methods.dart';
-import 'package:webtu_v2/models/period.dart';
+import 'package:neowebetu/api/exceptions.dart';
+import 'package:neowebetu/constant/api_endpoint.dart';
+import 'package:neowebetu/utils/http/methods.dart';
+import 'package:neowebetu/models/period.dart';
 
 // Custom exceptions for better error handling
 
@@ -74,7 +74,9 @@ Future<List<Period>> getCurrentPeriod(int levelId) async {
     // Log parsing errors if any occurred
     if (parsingErrors.isNotEmpty) {
       print('Warning: Some periods failed to parse:');
-      parsingErrors.forEach((error) => print('- $error'));
+      for (var error in parsingErrors) {
+        print('- $error');
+      }
     }
 
     // Return successfully parsed periods

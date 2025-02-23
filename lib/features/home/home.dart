@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
-import 'package:webtu_v2/data/quickActions.dart';
-import 'package:webtu_v2/shared/shared.dart';
+import 'package:neowebetu/blocs/student/student_bloc.dart';
+import 'package:neowebetu/data/quickActions.dart';
+import 'package:neowebetu/shared/shared.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class StudentDashboard extends StatefulWidget {
@@ -19,7 +19,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
     return BlocBuilder<StudentBloc, StudentState>(
       builder: (context, state) {
         if (state is StudentLoadingState) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -33,7 +33,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 pinned: false,
                 floating: false,
                 flexibleSpace: FlexibleSpaceBar(
-                  titlePadding: EdgeInsets.all(16),
+                  titlePadding: const EdgeInsets.all(16),
                   centerTitle: true,
                   title: Text(
                     'Welcome back, ${student.firstNameLatin}',
@@ -45,7 +45,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => QuickActionsGrid(),
+                  (context, index) => const QuickActionsGrid(),
                   childCount: 1,
                 ),
               )
@@ -59,12 +59,12 @@ class _StudentDashboardState extends State<StudentDashboard> {
             context.go('/login');
           });
 
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
 
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       },

@@ -3,14 +3,14 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/student.dart';
-import 'package:webtu_v2/api/period_api.dart';
-import 'package:webtu_v2/api/student_api.dart';
-import 'package:webtu_v2/blocs/period/period_bloc.dart';
-import 'package:webtu_v2/blocs/session/session_bloc.dart';
-import 'package:webtu_v2/models/auth_response.dart';
-import 'package:webtu_v2/models/student.dart';
-import 'package:webtu_v2/services/auth_service.dart';
+import 'package:neowebetu/DatabaseHelper/Repositories/student.dart';
+import 'package:neowebetu/api/period_api.dart';
+import 'package:neowebetu/api/student_api.dart';
+import 'package:neowebetu/blocs/period/period_bloc.dart';
+import 'package:neowebetu/blocs/session/session_bloc.dart';
+import 'package:neowebetu/models/auth_response.dart';
+import 'package:neowebetu/models/student.dart';
+import 'package:neowebetu/services/auth_service.dart';
 part 'student_event.dart';
 part 'student_state.dart';
 
@@ -77,7 +77,7 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
           periodBloc.add(AddPeriodEvent(periods: periods));
         } catch (e) {
-          emit(SignInFailureState(
+          emit(const SignInFailureState(
               errorMessage: "Invalid credentials. Please try again."));
         }
       },

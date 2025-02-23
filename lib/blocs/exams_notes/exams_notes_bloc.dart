@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:webtu_v2/DatabaseHelper/Repositories/exams_notes.dart';
-import 'package:webtu_v2/api/exam_notes_api.dart';
-import 'package:webtu_v2/models/exam_notes.dart';
+import 'package:neowebetu/DatabaseHelper/Repositories/exams_notes.dart';
+import 'package:neowebetu/api/exam_notes_api.dart';
+import 'package:neowebetu/models/exam_notes.dart';
 
 part 'exams_notes_event.dart';
 part 'exams_notes_state.dart';
@@ -17,7 +17,7 @@ class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
       if (exams != null) {
         emit(ExamsNotesLoaded(notes: exams));
       } else {
-        emit(FailureState(errorMessage: 'there are not data to show'));
+        emit(const FailureState(errorMessage: 'there are not data to show'));
       }
     });
 

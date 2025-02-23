@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:webtu_v2/DatabaseHelper/tables.dart';
+import 'package:neowebetu/DatabaseHelper/tables.dart';
 
 class DatabaseHelper {
   final databaseName = "app1.db";

@@ -1,6 +1,6 @@
-import 'package:webtu_v2/DatabaseHelper/connection.dart';
-import 'package:webtu_v2/DatabaseHelper/tables.dart';
-import 'package:webtu_v2/models/student.dart';
+import 'package:neowebetu/DatabaseHelper/connection.dart';
+import 'package:neowebetu/DatabaseHelper/tables.dart';
+import 'package:neowebetu/models/student.dart';
 
 class StudentRepository {
   final DatabaseHelper databaseHelper = DatabaseHelper();

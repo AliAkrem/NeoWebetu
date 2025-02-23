@@ -1,6 +1,6 @@
 {
-    "name": "webtu_v2",
-    "short_name": "webtu_v2",
+    "name": "neowebetu",
+    "short_name": "neowebetu",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

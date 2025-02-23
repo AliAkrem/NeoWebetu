@@ -1,8 +1,8 @@
 import 'package:cached_memory_image/cached_memory_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
-import 'package:webtu_v2/data/student_card.dart' as studentCard;
+import 'package:neowebetu/blocs/student/student_bloc.dart';
+import 'package:neowebetu/data/student_card.dart' as studentCard;
 
 class StudentData extends StatelessWidget {
   const StudentData({
@@ -54,7 +54,7 @@ class StudentData extends StatelessWidget {
             ],
           );
         }
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       },
@@ -87,7 +87,7 @@ class StudentData extends StatelessWidget {
                   overflow: TextOverflow.clip,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 24,
               ),
               Text(

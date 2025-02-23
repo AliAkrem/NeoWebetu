@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:neowebetu/blocs/student/student_bloc.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -139,7 +139,7 @@ class _LoginFormState extends State<LoginForm> {
                       }
                     },
                     child: _isLoading
-                        ? SizedBox(
+                        ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
@@ -147,7 +147,7 @@ class _LoginFormState extends State<LoginForm> {
                               color: Colors.white,
                             ),
                           )
-                        : Text("Login"),
+                        : const Text("Login"),
                   ),
                 ),
               ],

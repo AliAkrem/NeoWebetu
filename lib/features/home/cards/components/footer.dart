@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
-import 'package:webtu_v2/data/student_card.dart' as studentCard;
+import 'package:neowebetu/blocs/student/student_bloc.dart';
+import 'package:neowebetu/data/student_card.dart' as studentCard;
 
 class Footer extends StatelessWidget {
   const Footer({super.key});

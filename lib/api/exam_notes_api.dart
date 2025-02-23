@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webtu_v2/api/exceptions.dart';
-import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/utils/http/methods.dart';
-import 'package:webtu_v2/models/exam_notes.dart';
+import 'package:neowebetu/api/exceptions.dart';
+import 'package:neowebetu/constant/api_endpoint.dart';
+import 'package:neowebetu/utils/http/methods.dart';
+import 'package:neowebetu/models/exam_notes.dart';
 
 class ExamNotesResult {
   final List<ExamNotes> notes;

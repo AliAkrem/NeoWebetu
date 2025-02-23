@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:webtu_v2/models/auth_response.dart';
+import 'package:neowebetu/models/auth_response.dart';
 
 part 'session_event.dart';
 part 'session_state.dart';

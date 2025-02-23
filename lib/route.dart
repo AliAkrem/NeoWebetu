@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:webtu_v2/features/auth_guard.dart';
-import 'package:webtu_v2/features/home/assessment_notes/assessment_notes.dart';
-import 'package:webtu_v2/features/home/cards/cards.dart';
-import 'package:webtu_v2/features/home/exams_notes/exams_notes.dart';
-import 'package:webtu_v2/features/home/layout.dart';
-import 'package:webtu_v2/features/home/profile/profile.dart';
-import 'package:webtu_v2/features/login/login.dart';
-import 'package:webtu_v2/features/home/home.dart';
+import 'package:neowebetu/features/auth_guard.dart';
+import 'package:neowebetu/features/home/assessment_notes/assessment_notes.dart';
+import 'package:neowebetu/features/home/cards/cards.dart';
+import 'package:neowebetu/features/home/exams_notes/exams_notes.dart';
+import 'package:neowebetu/features/home/layout.dart';
+import 'package:neowebetu/features/home/profile/profile.dart';
+import 'package:neowebetu/features/login/login.dart';
+import 'package:neowebetu/features/home/home.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:webtu_v2/shared/comming_soon.dart';
+import 'package:neowebetu/shared/coming_soon.dart';
 
 final appRoutes = GoRouter(
   initialLocation: '/',
-  errorPageBuilder: (context, state) => MaterialPage(child: ComingSoonScreen()),
+  errorPageBuilder: (context, state) => const MaterialPage(child:  ComingSoonScreen()),
   routes: [
     GoRoute(
       path: '/',
@@ -24,7 +24,7 @@ final appRoutes = GoRouter(
       path: '/login',
       name: 'login',
       pageBuilder: (context, state) => MaterialPage<void>(
-        child: LoginScreen(),
+        child: const LoginScreen(),
         key: state.pageKey,
       ),
     ),
@@ -37,8 +37,7 @@ final appRoutes = GoRouter(
           path: '/home',
           name: 'home',
           pageBuilder: (context, state) => MaterialPage(
-            
-            child: StudentDashboard(),
+            child: const StudentDashboard(),
             key: state.pageKey,
           ),
         ),
@@ -46,8 +45,7 @@ final appRoutes = GoRouter(
           name: 'exams',
           path: '/home/exams',
           pageBuilder: (context, state) => MaterialPage(
-            canPop: true,
-            child: ExamsNotesScreen(),
+            child: const ExamsNotesScreen(),
             key: state.pageKey,
           ),
         ),
@@ -55,8 +53,7 @@ final appRoutes = GoRouter(
           name: 'assessment',
           path: '/home/assessment',
           pageBuilder: (context, state) => MaterialPage(
-
-            child: AssessmentNotesScreen(),
+            child: const AssessmentNotesScreen(),
             key: state.pageKey,
           ),
         ),
@@ -64,7 +61,7 @@ final appRoutes = GoRouter(
           name: 'profile',
           path: '/home/profile',
           pageBuilder: (context, state) => MaterialPage(
-            child: ProfileScreen(),
+            child: const ProfileScreen(),
             key: state.pageKey,
           ),
         ),
@@ -72,7 +69,7 @@ final appRoutes = GoRouter(
           name: 'cards',
           path: '/home/cards',
           pageBuilder: (context, state) => MaterialPage(
-            child: CardsScreen(),
+            child: const CardsScreen(),
             key: state.pageKey,
           ),
         ),

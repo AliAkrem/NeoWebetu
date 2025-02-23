@@ -3,7 +3,7 @@ import 'package:cached_memory_image/cached_memory_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:neowebetu/blocs/student/student_bloc.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Text(
                           '${student.firstNameLatin} ${student.lastNameLatin}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -102,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             leading: const Icon(Icons.language),
                             title: const Text('Language'),
                             trailing: DropdownButton<String>(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.symmetric(horizontal: 8),
                               value: 'English',
                               underline: const SizedBox(),
                               items: const [

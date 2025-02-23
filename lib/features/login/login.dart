@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webtu_v2/features/login/components/login_form.dart';
+import 'package:neowebetu/features/login/components/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

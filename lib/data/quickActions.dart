@@ -15,23 +15,23 @@ class QuickAction {
 }
 
 final List<QuickAction> quickActions = [
-  QuickAction(
+  const QuickAction(
     title: 'Exams',
     icon: Icons.school,
     path: '/home/exams',
   ),
-  QuickAction(
+  const QuickAction(
     title: 'Assessment',
     icon: Icons.edit,
     path: '/home/assessment',
   ),
-  QuickAction(
+  const QuickAction(
     title: 'Exam Schedule',
     subtitle: 'View your grades',
     icon: Icons.calendar_month_rounded,
     path: '/home/exam-schedule',
   ),
-  QuickAction(
+  const QuickAction(
     title: 'Time Table',
     subtitle: 'View your grades',
     icon: Icons.calendar_month_rounded,

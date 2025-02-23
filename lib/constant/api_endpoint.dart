@@ -14,11 +14,11 @@ String ITABLISSMENT_LOGO_URL(String establishmentId) =>
     "${BASE_URL}api/infos/logoEtablissement/$establishmentId";
 String STUDENT_CARDS_URL(String uuid) => "$BASE_URL/api/infos/bac/$uuid/dias";
 String EXAM_NOTES_URL(int cardId) =>
-    "${BASE_URL}/api/infos/planningSession/dia/$cardId/noteExamens";
+    "$BASE_URL/api/infos/planningSession/dia/$cardId/noteExamens";
 String ASSESSMENT_NOTES_URL(int cardId) =>
-    "${BASE_URL}/api/infos/controleContinue/dia/$cardId/notesCC";
+    "$BASE_URL/api/infos/controleContinue/dia/$cardId/notesCC";
 
 String CHECK_URL(String username) => "$BASE_URL/check/$username";
 
 String PERIOD_URL(int levelId) =>
-    "$BASE_URL/api/infos/niveau/${levelId}/periodes";
+    "$BASE_URL/api/infos/niveau/$levelId/periodes";

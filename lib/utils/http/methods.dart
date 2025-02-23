@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webtu_v2/constant/api_endpoint.dart';
+import 'package:neowebetu/constant/api_endpoint.dart';
 
 Future<Map<String, String>> _getAuthHeaders() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();

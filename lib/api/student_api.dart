@@ -1,6 +1,6 @@
-import 'package:webtu_v2/api/exceptions.dart';
-import 'package:webtu_v2/constant/api_endpoint.dart';
-import 'package:webtu_v2/models/student.dart';
+import 'package:neowebetu/api/exceptions.dart';
+import 'package:neowebetu/constant/api_endpoint.dart';
+import 'package:neowebetu/models/student.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/auth_response.dart';

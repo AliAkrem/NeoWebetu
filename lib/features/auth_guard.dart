@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webtu_v2/blocs/student/student_bloc.dart';
+import 'package:neowebetu/blocs/student/student_bloc.dart';
 
 class AuthGuard extends StatefulWidget {
   const AuthGuard({super.key});
@@ -25,7 +25,7 @@ class _AuthGuardState extends State<AuthGuard> {
           }
         });
       },
-      child: Scaffold(
+      child: const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
         ),
