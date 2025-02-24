@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:neowebetu/DatabaseHelper/tables.dart';
 
 class DatabaseHelper {
-  final databaseName = "app1.db";
+  final databaseName = "app2.db";
 
   Future<Database> initDatabase() async {
     final databasePath = await getDatabasesPath();
@@ -15,4 +15,6 @@ class DatabaseHelper {
       await db.execute(Tables.AssessmentNotesTable);
     });
   }
+
+
 }
