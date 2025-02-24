@@ -19,8 +19,8 @@ class Student {
   final String domainLabelArabic;
   final String branchLabel;
   final String branchLabelArabic;
-  final String specialtyLabel;
-  final String specialtyLabelArabic;
+  final String? specialtyLabel;
+  final String? specialtyLabelArabic;
   final int trainingOfferOpeningId;
   final String refCycleLabel;
   final String refCycleLabelArabic;
@@ -49,8 +49,8 @@ class Student {
       required this.domainLabelArabic,
       required this.branchLabel,
       required this.branchLabelArabic,
-      required this.specialtyLabel,
-      required this.specialtyLabelArabic,
+       this.specialtyLabel,
+       this.specialtyLabelArabic,
       required this.trainingOfferOpeningId,
       required this.refCycleLabel,
       required this.refCycleLabelArabic,
@@ -80,8 +80,8 @@ class Student {
       domainLabelArabic: json['ofLlDomaineArabe'] as String,
       branchLabel: json['ofLlFiliere'] as String,
       branchLabelArabic: json['ofLlFiliereArabe'] as String,
-      specialtyLabel: json['ofLlSpecialite'] as String,
-      specialtyLabelArabic: json['ofLlSpecialiteArabe'] as String,
+      specialtyLabel: json['ofLlSpecialite'] ?? "" as String?,
+      specialtyLabelArabic: json['ofLlSpecialiteArabe'] ?? "" as String?,
       trainingOfferOpeningId: json['ouvertureOffreFormationId'] as int,
       refCycleLabel: json['refLibelleCycle'] as String,
       refCycleLabelArabic: json['refLibelleCycleAr'] as String,
