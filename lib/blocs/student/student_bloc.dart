@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:neowebetu/DatabaseHelper/connection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:neowebetu/DatabaseHelper/Repositories/student.dart';
 import 'package:neowebetu/api/period_api.dart';
@@ -47,7 +48,9 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        studentRepository.deleteStudent();
+        final db = DatabaseHelper();
+
+        await db.destroyDatabase();
         await prefs.clear();
 
         emit(StudentNotFoundState());

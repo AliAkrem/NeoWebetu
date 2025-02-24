@@ -15,4 +15,10 @@ class DatabaseHelper {
       await db.execute(Tables.AssessmentNotesTable);
     });
   }
+
+  destroyDatabase() async {
+    final databasePath = await getDatabasesPath();
+    final path = join(databasePath, databaseName);
+    await deleteDatabase(path);
+  }
 }

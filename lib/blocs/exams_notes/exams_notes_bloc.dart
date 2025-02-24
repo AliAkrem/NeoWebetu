@@ -8,15 +8,17 @@ part 'exams_notes_event.dart';
 part 'exams_notes_state.dart';
 
 class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
-  final ExamsNotesRepository examRepo;
+  final ExamsNotesRepository examRepo = ExamsNotesRepository();
 
-  ExamsNotesBloc(this.examRepo) : super(ExamsNotesInitial()) {
+  ExamsNotesBloc() : super(ExamsNotesInitial()) {
     on<GetStaleExamNotesEvent>((event, emit) async {
       emit(ExamsNotesLoading());
       final exams = await examRepo.getExamsNotes();
       if (exams != null) {
         emit(ExamsNotesLoaded(notes: exams));
       } else {
+        // try to revalidate if there are no data
+        add(RevalidateExamNotesEvent());
         emit(const FailureState(errorMessage: 'there are not data to show'));
       }
     });
@@ -39,7 +41,7 @@ class ExamsNotesBloc extends Bloc<ExamsNotesEvent, ExamsNotesState> {
     on<RevalidateExamNotesEvent>(
       (event, emit) async {
         final res = await getExamNotes();
-
+        print('revalidate data');
         add(UpsertExamsNotesEvent(newNotes: res.notes));
       },
     );

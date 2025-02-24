@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neowebetu/DatabaseHelper/Repositories/exams_notes.dart';
 import 'package:neowebetu/blocs/exams_notes/exams_notes_bloc.dart';
 import 'package:neowebetu/blocs/period/period_bloc.dart';
 import 'package:neowebetu/features/home/exams_notes/components/tab.dart';
@@ -25,8 +24,7 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
           create: (context) => PeriodBloc()..add(const GetPeriodEvent()),
         ),
         BlocProvider(
-          create: (context) =>
-              ExamsNotesBloc(ExamsNotesRepository())..add(GetExamNotesEvent()),
+          create: (context) => ExamsNotesBloc()..add(GetStaleExamNotesEvent()),
         )
       ],
       child: BlocBuilder<ExamsNotesBloc, ExamsNotesState>(

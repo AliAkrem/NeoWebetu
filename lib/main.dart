@@ -5,10 +5,13 @@ import 'package:neowebetu/blocs/period/period_bloc.dart';
 import 'package:neowebetu/blocs/session/session_bloc.dart';
 import 'package:neowebetu/blocs/student/student_bloc.dart';
 import 'package:neowebetu/route.dart';
+import 'package:neowebetu/services/foreground_service.dart';
 import './theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ForegroundService().startService();
+
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   runApp(MyApp(savedThemeMode: savedThemeMode));
 }
