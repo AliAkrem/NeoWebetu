@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return AdaptiveTheme(
       light: appThemeLight,
       dark: appThemeDark,
-      initial: savedThemeMode ?? AdaptiveThemeMode.light,
+      initial: savedThemeMode ?? AdaptiveThemeMode.dark,
       builder: (theme, darkTheme) => MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => sessionBloc),

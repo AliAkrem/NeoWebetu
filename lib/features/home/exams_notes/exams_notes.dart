@@ -61,11 +61,13 @@ class _ExamsNotesScreenState extends State<ExamsNotesScreen>
                     itemBuilder: (context, index) {
                       final note = entry.value[index];
                       return ListTile(
-                        title: Text(note.labelFr),
-                        subtitle: Text(note.labelAr),
+                        title: Text(note.labelFr,
+                        style: Theme.of(context).textTheme.bodySmall
+                        ),
                         trailing: Text(
-                          'Note: ${note.note > -1 ? note.note : 'N/A'}',
+                          '${note.note > -1 ? note.note : 'N/A'}',
                           style: TextStyle(
+                            
                             fontWeight: FontWeight.bold,
                             color: note.note >= 10
                                 ? Colors.green

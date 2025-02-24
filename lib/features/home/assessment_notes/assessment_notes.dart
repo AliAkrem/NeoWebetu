@@ -63,9 +63,10 @@ class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
                       final note = entry.value[index];
                       return ListTile(
                         title: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(note.rattachementMcMcLibelleFr),
+                            Text(note.rattachementMcMcLibelleFr,
+                                style: Theme.of(context).textTheme.bodySmall),
                             const SizedBox(
                               width: 8,
                             ),
@@ -73,13 +74,16 @@ class _AssessmentNotesScreenState extends State<AssessmentNotesScreen>
                               note.apCode,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).colorScheme.primary),
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.fontSize),
                             ),
                           ],
                         ),
-                        subtitle: Text(note.rattachementMcMcLibelleAr),
                         trailing: Text(
-                          'Note: ${note.note > -1 ? note.note : 'N/A'}',
+                          '${note.note > -1 ? note.note : 'N/A'}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: note.note >= 10

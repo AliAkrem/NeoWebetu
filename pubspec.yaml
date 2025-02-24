@@ -1,9 +1,9 @@
 name: neowebetu
-description: "A new Flutter project."
+description: "A modern Flutter remake of Progres/Webetu with Material Design, offline capabilities, and enhanced user experience features. Access your academic data seamlessly with or without internet connection."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 0.1.0+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
