@@ -32,11 +32,12 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
         final AuthResponse? session = await AuthService(prefs).getCurrentUser();
 
-        if (session != null) {
+        if (session == null || student == null) {
+          emit(StudentNotFoundState());
+        } else {
           sessionBloc.add(LoadSessionEvent(session: session));
+          emit(StudentLoadedState(student: student));
         }
-
-        emit(StudentLoadedState(student: student));
       } catch (e) {
         emit(FailureState(errorMessage: e.toString()));
       }
@@ -48,10 +49,8 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
 
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        final db = DatabaseHelper();
-
-        await db.destroyDatabase();
         await prefs.clear();
+        await studentRepository.deleteStudent();
 
         emit(StudentNotFoundState());
       },
@@ -76,7 +75,7 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
           final periods = await getCurrentPeriod(student.levelId);
 
           emit(StudentLoadedState(student: student));
-          studentRepository.addStudent(student);
+          await studentRepository.addStudent(student);
 
           periodBloc.add(AddPeriodEvent(periods: periods));
         } catch (e) {
