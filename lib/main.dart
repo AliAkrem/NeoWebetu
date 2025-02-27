@@ -10,7 +10,9 @@ import './theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ForegroundService().startService();
+
+  // This line activates repeated refetching of data
+  // await ForegroundService().startService();
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   runApp(MyApp(savedThemeMode: savedThemeMode));
